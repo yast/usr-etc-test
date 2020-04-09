@@ -22,7 +22,6 @@
 # handled by YAST correctly.
 #
 require "rspec"
-require "cheetah"
 require "yaml"
 require "tmpdir"
 require "zlib"
