@@ -1,0 +1,204 @@
+# 
+# This file describes a white list of files in /usr/etc found in
+# http://download.suse.de/ibs/SUSE:/Factory:/Head/standard/repodata/
+# which are not touched by YAST or which are already handled by YAST correctly.
+#
+#  files:
+#    < files/dirs in /usr/etc >
+#  defined_by:
+#    < none YAST packages which contain/touch these files >
+#   yast_support:
+#    < YAST packages which handle these files ( or "not used by YAST" ) >
+#
+
+- files:
+    - /usr/etc/default
+    - /usr/etc/default/runuser
+    - /usr/etc/default/su
+  defined_by:
+    - util-linux
+  yast_support:
+    - "not used by YAST"
+
+- files:
+    - /usr/etc/ethers
+  defined_by:
+    - netcfg
+  yast_support:
+    - "not used by YAST"
+
+- files:
+    - /usr/etc/fluent-bit
+    - /usr/etc/fluent-bit/fluent-bit.conf
+    - /usr/etc/fluent-bit/parsers.conf
+    - /usr/etc/fluent-bit/parsers_ambassador.conf
+    - /usr/etc/fluent-bit/parsers_cinder.conf
+    - /usr/etc/fluent-bit/parsers_extra.conf
+    - /usr/etc/fluent-bit/parsers_java.conf
+    - /usr/etc/fluent-bit/parsers_openstack.conf
+    - /usr/etc/fluent-bit/plugins.conf
+  defined_by:
+    - fluent-bit
+  yast_support:
+    - "not used by YAST"
+
+- files:
+    - /usr/etc/hanadb_exporter
+  defined_by:
+    - hanadb_exporter
+  yast_support:
+    - "not used by YAST"
+    
+- files:
+    - /usr/etc/kubicd
+    - /usr/etc/kubicd/kubicd.conf
+    - /usr/etc/kubicd/rbac.conf
+  defined_by:
+    - kubicd
+  yast_support:
+    - "not used by YAST"
+
+- files:
+    - /usr/etc/lesskey
+    - /usr/etc/lesskey.bin
+  defined_by:
+    - less
+  yast_support:
+    - "not used by YAST"
+    
+#- files:
+#    - /usr/etc/login.defs  
+#  defined_by:
+#    - shadow
+#  yast_support:
+#    - yast2-security
+#    - yast2-users
+#    - yast2
+
+- files:
+    - /usr/etc/networks
+    - /usr/etc/protocols
+  defined_by:
+    - netcfg
+  yast_support:
+    - "not used by YAST"
+
+#- files:
+#    - /usr/etc/services
+#  defined_by:
+#    - netcfg
+#  yast_support:
+#    - yast2
+
+- files:
+    - /usr/etc/rebootmgr.conf
+  defined_by:
+    - rebootmgr
+  yast_support:
+    - "not used by YAST"
+    
+- files:
+    - /usr/etc/registry
+    - /usr/etc/registry/auth_config.yml
+    - /usr/etc/registry/config.yml
+    - /usr/etc/registry/config.yml.docker_auth
+    - /usr/etc/registry/config.yml.portus
+  defined_by:
+    - container-registry-systemd
+  yast_support:
+    - "not used by YAST"    
+
+- files:
+    - /usr/etc/transactional-update.conf
+  defined_by:
+    - transactional-update
+  yast_support:
+    - "not used by YAST"
+
+- files:
+    - /usr/etc/xdg
+    - /usr/etc/xdg/autostart
+    - /usr/etc/xdg/autostart/nm-tray-autostart.desktop
+  defined_by:
+    - nm-tray
+  yast_support:
+    - "not used by YAST"
+
+- files:
+    - /usr/etc/xob
+    - /usr/etc/xob/styles.cfg
+  defined_by:
+    - xob
+  yast_support:
+    - "not used by YAST"
+
+- files:
+    - /usr/etc/pam.d
+    - /usr/etc/pam.d/common-password
+    - /usr/etc/pam.d/common-session
+    - /usr/etc/pam.d/other
+    - /usr/etc/securetty
+  defined_by:
+    - pam
+  yast_support:
+    - "not used by YAST"
+
+#- files:
+#    - /usr/etc/pam.d/common-account
+#    - /usr/etc/pam.d/common-auth
+#  defined_by:
+#    - pam
+#  yast_support:
+#    - yast2-auth-client
+    
+- files:
+    - /usr/etc/pam.d/chage
+    - /usr/etc/pam.d/chfn
+    - /usr/etc/pam.d/chpasswd
+    - /usr/etc/pam.d/chsh
+    - /usr/etc/pam.d/groupadd
+    - /usr/etc/pam.d/groupdel
+    - /usr/etc/pam.d/groupmod
+    - /usr/etc/pam.d/newusers
+    - /usr/etc/pam.d/passwd
+    - /usr/etc/pam.d/useradd
+    - /usr/etc/pam.d/userdel
+    - /usr/etc/pam.d/usermod
+  defined_by:
+    - shadow
+  yast_support:
+    - "not used by YAST"
+
+- files:
+    - /usr/etc/pam.d/kde
+  defined_by:
+    - kscreenlocker
+  yast_support:
+    - "not used by YAST"
+    
+- files:
+    - /usr/etc/pam.d/login
+    - /usr/etc/pam.d/remote
+    - /usr/etc/pam.d/runuser
+    - /usr/etc/pam.d/runuser-l    
+    - /usr/etc/pam.d/su
+    - /usr/etc/pam.d/su-l
+  defined_by:
+    - util-linux
+  yast_support:
+    - "not used by YAST"
+
+- files:
+    - /usr/etc/pam.d/sudo
+    - /usr/etc/pam.d/sudo-i    
+  defined_by:
+    - sudo
+  yast_support:
+    - "not used by YAST"
+
+- files:
+    - /usr/etc/pam.d/vlock
+  defined_by:
+    - kbd
+  yast_support:
+    - "not used by YAST"
