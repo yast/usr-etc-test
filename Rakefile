@@ -1,1 +1,1 @@
-require "yast/rake"
+require 'yast/rake'
