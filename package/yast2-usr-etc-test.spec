@@ -23,7 +23,7 @@
 #
 ######################################################################
 
-Name:           yast2-usr-etc-check
+Name:           yast2-usr-etc-test
 Version:        0.0.1
 Release:        0
 BuildArch:      noarch
