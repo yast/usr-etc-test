@@ -129,10 +129,14 @@ class UsrEtcTestHelper
   def prepare_distribution
     repo_config = YAML.load_file(REPOSITORIES_CONF)
 
-    raise "Cannot find configuration in repo_conf.yml for #{@distribution}" unless repo_config.key?(@distribution)
+    if !repo_config.key?(@distribution)
+      raise "Cannot find configuration in repo_conf.yml for #{@distribution}"
+    end
 
     distribution_config = repo_config[@distribution]
-    raise "Cannot find 'repository' in configuration for '#{@distribution}'" unless distribution_config['repository']
+    if !distribution_config['repository']
+      raise "Cannot find 'repository' in configuration for '#{@distribution}'"
+    end
 
     @white_list = YAML.load_file(File.join(TEST_DIR, @distribution, WHITELIST))
     puts "white list: #{@white_list}"
@@ -140,7 +144,8 @@ class UsrEtcTestHelper
     @tmp_dir = Dir.mktmpdir "#{TEMPORARY_DIRECTORY}_#{@distribution}_"
     puts "Test for #{@distribution} will use temporary dir #{@tmp_dir}"
 
-    puts "Downloading *-filelists.xml.gz from repo #{distribution_config['repository']}"
+    puts "Downloading *-filelists.xml.gz from repo " \
+      "#{distribution_config['repository']}"
     command = "cd #{@tmp_dir} ; " \
       "/usr/bin/wget -r -nd --no-parent -A '*-filelists.xml.gz' " \
       "#{distribution_config['repository']} ; cd -"
