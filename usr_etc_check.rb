@@ -99,6 +99,10 @@ class UsrEtcTestHelper
       ret = false
       @white_list.each do |entry|
         entry['files'].each do |tag|
+          if !(tag.end_with?("*") && file.start_with?(tag.chomp("*"))) &&
+             !(file == tag)
+            next
+          end
           next unless file == tag
           if !entry['yast_support'] || entry['yast_support'].empty?
             entry['yast_support'] = ["not used by YAST"]
