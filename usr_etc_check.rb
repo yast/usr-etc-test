@@ -80,11 +80,14 @@ class UsrEtcTestHelper
   end
 
   def check_user_etc
-    prepare_distribution
     files = []
+    Dir.mktmpdir("#{TEMPORARY_DIRECTORY}_#{@distribution}_") do |tmp_dir|
+      puts "Test for #{@distribution} will use temporary dir #{tmp_dir}"
 
-    Dir[File.join(@tmp_dir, '/**/*-filelists.xml.gz')].each do |f|
-      files.concat(files_from_xml(f))
+      prepare_distribution(tmp_dir)
+      Dir[File.join(tmp_dir, '/**/*-filelists.xml.gz')].each do |f|
+        files.concat(files_from_xml(f))
+      end
     end
     files.uniq!
     files.sort!
@@ -108,7 +111,6 @@ class UsrEtcTestHelper
       ret
     end
 
-    cleanup
     files
   end
 
@@ -126,18 +128,10 @@ class UsrEtcTestHelper
     l.files
   end
 
-  # Removes a temporary directory for the current object
-  def cleanup
-    return unless @tmp_dir && File.exist?(@tmp_dir)
-
-    puts "Removing temporary directory #{@tmp_dir}"
-    FileUtils.rm_rf @tmp_dir
-  end
-
   # Prepares a testing environment for a given repositories
   # Directories are named after products and there is a corresponding
   # configuration in #{REPOSITORIES_CONF} file.
-  def prepare_distribution
+  def prepare_distribution(tmp_dir)
     repo_config = YAML.load_file(REPOSITORIES_CONF)
 
     unless repo_config.key?(@distribution)
@@ -151,17 +145,14 @@ class UsrEtcTestHelper
 
     @white_list = YAML.load_file(File.join(TEST_DIR, @distribution, WHITELIST))
     puts "white list: #{@white_list}"
-
-    @tmp_dir = Dir.mktmpdir "#{TEMPORARY_DIRECTORY}_#{@distribution}_"
-    puts "Test for #{@distribution} will use temporary dir #{@tmp_dir}"
-
+    
     puts 'Downloading *-filelists.xml.gz from repo ' \
          "#{distribution_config['repository']}"
     command = "/usr/bin/wget -r -nd --no-parent -A '*-filelists.xml.gz' " \
       "#{distribution_config['repository']+'repodata/'}"
 
     puts "With command #{command}"
-    Dir.chdir(@tmp_dir) do
+    Dir.chdir(tmp_dir) do
       system(command)
     end
   end
