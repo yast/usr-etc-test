@@ -8,7 +8,7 @@
 #  defined_by:
 #    < none YAST packages which contain/touch these files >
 #   yast_support:
-#    < YAST packages which handle these files ( or "not used by YAST" ) >
+#    < YAST packages which handle these files >
 #
 
 - files:
@@ -18,14 +18,12 @@
   defined_by:
     - util-linux
   yast_support:
-    - "not used by YAST"
 
 - files:
     - /usr/etc/ethers
   defined_by:
     - netcfg
   yast_support:
-    - "not used by YAST"
 
 - files:
     - /usr/etc/fluent-bit
@@ -40,14 +38,12 @@
   defined_by:
     - fluent-bit
   yast_support:
-    - "not used by YAST"
 
 - files:
     - /usr/etc/hanadb_exporter
   defined_by:
     - hanadb_exporter
   yast_support:
-    - "not used by YAST"
     
 - files:
     - /usr/etc/kubicd
@@ -56,7 +52,6 @@
   defined_by:
     - kubicd
   yast_support:
-    - "not used by YAST"
 
 - files:
     - /usr/etc/lesskey
@@ -64,7 +59,6 @@
   defined_by:
     - less
   yast_support:
-    - "not used by YAST"
     
 #- files:
 #    - /usr/etc/login.defs  
@@ -81,7 +75,6 @@
   defined_by:
     - netcfg
   yast_support:
-    - "not used by YAST"
 
 #- files:
 #    - /usr/etc/services
@@ -95,7 +88,6 @@
   defined_by:
     - rebootmgr
   yast_support:
-    - "not used by YAST"
     
 - files:
     - /usr/etc/registry
@@ -106,14 +98,12 @@
   defined_by:
     - container-registry-systemd
   yast_support:
-    - "not used by YAST"    
 
 - files:
     - /usr/etc/transactional-update.conf
   defined_by:
     - transactional-update
   yast_support:
-    - "not used by YAST"
 
 - files:
     - /usr/etc/xdg
@@ -122,7 +112,6 @@
   defined_by:
     - nm-tray
   yast_support:
-    - "not used by YAST"
 
 - files:
     - /usr/etc/xob
@@ -130,7 +119,6 @@
   defined_by:
     - xob
   yast_support:
-    - "not used by YAST"
 
 - files:
     - /usr/etc/pam.d
@@ -141,7 +129,6 @@
   defined_by:
     - pam
   yast_support:
-    - "not used by YAST"
 
 #- files:
 #    - /usr/etc/pam.d/common-account
@@ -167,14 +154,12 @@
   defined_by:
     - shadow
   yast_support:
-    - "not used by YAST"
 
 - files:
     - /usr/etc/pam.d/kde
   defined_by:
     - kscreenlocker
   yast_support:
-    - "not used by YAST"
     
 - files:
     - /usr/etc/pam.d/login
@@ -186,7 +171,6 @@
   defined_by:
     - util-linux
   yast_support:
-    - "not used by YAST"
 
 - files:
     - /usr/etc/pam.d/sudo
@@ -194,11 +178,9 @@
   defined_by:
     - sudo
   yast_support:
-    - "not used by YAST"
 
 - files:
     - /usr/etc/pam.d/vlock
   defined_by:
     - kbd
   yast_support:
-    - "not used by YAST"

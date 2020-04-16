@@ -1,4 +1,5 @@
-# Copyright (c) [2017] SUSE LLC
+#! /usr/bin/env ruby
+# Copyright (c) [2020] SUSE LLC
 #
 # All Rights Reserved.
 #
@@ -28,6 +29,10 @@ require 'zlib'
 require 'rexml/document'
 require 'rexml/streamlistener'
 
+# allow aborting via Ctr+C
+Signal.trap('INT') { $stderr.puts "Aborted"; exit 1 }
+Signal.trap('TERM') { $stderr.puts "Aborted"; exit 1 }
+
 # use the XML SAX (streaming) parser,
 # the uncompressed Leap 15.1 XML is ~97MB!
 class Listener
@@ -49,7 +54,10 @@ class Listener
 
   def tag_end(tag)
     if tag == 'file'
-      files << @file if @file.start_with?('/usr/etc/')
+      if @file.match(/^\/etc\/\S*\.d\//) || # bsc#1166473
+        @file.start_with?('/usr/etc/')        
+        files << @file
+      end
       @in_file_tag = false
     end
   end
@@ -89,6 +97,9 @@ class UsrEtcTestHelper
       @white_list.each do |entry|
         entry['files'].each do |tag|
           next unless file == tag
+          if !entry['yast_support'] || entry['yast_support'].empty?
+            entry['yast_support'] = ["not used by YAST"]
+          end
           puts "File #{file} from package #{entry['defined_by']} has already" \
                " been checked (#{entry['yast_support'].join(', ')})"
           ret = true
@@ -145,13 +156,26 @@ class UsrEtcTestHelper
     puts "Test for #{@distribution} will use temporary dir #{@tmp_dir}"
 
     puts 'Downloading *-filelists.xml.gz from repo ' \
-      "#{distribution_config['repository']}"
-    command = "cd #{@tmp_dir} ; " \
-      "/usr/bin/wget -r -nd --no-parent -A '*-filelists.xml.gz' " \
-      "#{distribution_config['repository']} ; cd -"
+         "#{distribution_config['repository']}"
+    command = "/usr/bin/wget -r -nd --no-parent -A '*-filelists.xml.gz' " \
+      "#{distribution_config['repository']+'repodata/'}"
 
     puts "With command #{command}"
-    ret = system(command)
-    raise 'Cannot fetch filelists.xml.gz from distribution' unless ret
+    Dir.chdir(@tmp_dir) do
+      system(command)
+    end
   end
 end
+
+if ARGV[0]
+  test = UsrEtcTestHelper.new(ARGV[0])
+  new_entries = test.check_user_etc
+  unless new_entries.empty?
+    puts "Following files/directories have to be checked:\n"
+    puts new_entries.join("\n")
+    raise 'Please check new configuration files.'
+  end
+else
+    raise "No distrubution (e.g. 'Factory') is given."
+end
+return 0
