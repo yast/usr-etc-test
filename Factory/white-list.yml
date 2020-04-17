@@ -36,7 +36,6 @@
     - ant
   yast_support:
 
-
 - files:
     - /etc/apache2/conf.d*
     - /etc/apache2/mod_nss.d*
@@ -854,7 +853,10 @@
     - /etc/zypp/credentials.d*
     - /etc/zypp/systemCheck.d*
   defined_by:
-    - 
+    - SUSEConnect
+    - libzypp
+    - zypper
+    - zypper-aptitude
   yast_support:
     - yast2-registration
     - yast2-pkg-bindings

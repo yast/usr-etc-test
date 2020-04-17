@@ -81,6 +81,7 @@ class UsrEtcTestHelper
 
   def check_user_etc
     files = []
+
     Dir.mktmpdir("#{TEMPORARY_DIRECTORY}_#{@distribution}_") do |tmp_dir|
       puts "Test for #{@distribution} will use temporary dir #{tmp_dir}"
 
@@ -103,7 +104,7 @@ class UsrEtcTestHelper
              !(file == tag)
             next
           end
-          next unless file == tag
+
           if !entry['yast_support'] || entry['yast_support'].empty?
             entry['yast_support'] = ["not used by YAST"]
           end
