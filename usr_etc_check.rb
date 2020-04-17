@@ -149,7 +149,7 @@ class UsrEtcTestHelper
     end
 
     @white_list = YAML.load_file(File.join(TEST_DIR, @distribution, WHITELIST))
-    puts "white list: #{@white_list}"
+    puts "white list entries: #{@white_list.size}"
     
     puts 'Downloading *-filelists.xml.gz from repo ' \
          "#{distribution_config['repository']}"

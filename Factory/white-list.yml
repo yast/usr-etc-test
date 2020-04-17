@@ -24,6 +24,58 @@
   yast_support:
 
 - files:
+    - /etc/X11/xinit/xinitrc.d*
+  defined_by:
+    - libcanberra-gtk-module-common
+    - spacenavd
+    - systemd
+    - virtualbox-guest-x11
+    - xdg-user-dirs
+    - xinit
+  yast_support:
+
+- files:
+    - /etc/X11/xorg.conf.d*
+  defined_by:
+    - systemd
+    - xorg-x11-Xvnc-module
+    - xorg-x11-driver-video
+    - xorg-x11-server
+    - xpra
+  yast_support:
+    - yast2
+
+- files:
+    - /etc/containers/registries.d*
+  defined_by:
+    - libcontainers-common
+  yast_support:
+
+- files:
+    - /etc/crio/crio.conf.d*
+  defined_by:
+    - cri-o
+  yast_support:
+
+- files:
+    - /etc/crio/crio.conf.d*
+  defined_by:
+    - cri-o
+  yast_support:
+
+- files:
+    - /etc/cron.d*
+  defined_by:
+    - atop-daemon
+    - cacti
+    - logdigest
+    - matomo
+    - nextcloud
+    - "..."
+  yast_support:
+    - yast2-ntp-client
+
+- files:
     - /etc/alsa.d*
     - /etc/alsa/conf.d*
   defined_by:
@@ -208,6 +260,15 @@
 
 - files:
     - /etc/etckeeper/commit.d*
+    - /etc/etckeeper/init.d*
+    - /etc/etckeeper/list-installed.d*
+    - /etc/etckeeper/post-install.d*
+    - /etc/etckeeper/pre-commit.d*
+    - /etc/etckeeper/pre-install.d*
+    - /etc/etckeeper/unclean.d*
+    - /etc/etckeeper/uninit.d*
+    - /etc/etckeeper/update-ignore.d*
+    - /etc/etckeeper/vcs.d*
   defined_by:
     - etckeeper
   yast_support:
@@ -289,6 +350,7 @@
 
 - files:
     - /etc/icinga2/conf.d*
+    - /etc/icinga2/zones.d*    
   defined_by:
     - icinga2
   yast_support:
@@ -362,6 +424,7 @@
 
 - files:
     - /etc/lighttpd/conf.d*
+    - /etc/lighttpd/vhosts.d*
   defined_by:
     - dehydrated-lighttpd
   yast_support:
@@ -546,6 +609,8 @@
 
 - files:
     - /etc/php7/conf.d*
+    - /etc/lighttpd/vhosts.d*
+    - /etc/php7/fpm/php-fpm.d*
   defined_by:
     - php-mapi
   yast_support:
@@ -601,6 +666,7 @@
   
 - files:
     - /etc/pulse/client.conf.d*
+    - /etc/pulse/daemon.conf.d*
   defined_by:
     - libpulse0
   yast_support:
