@@ -1,6 +1,6 @@
 # 
-# This file describes a white list of files in /usr/etc found in
-# http://download.suse.de/ibs/SUSE:/Factory:/Head/standard/repodata/
+# This file describes a white list of files in /usr/etc and /etc found in
+# https://download.opensuse.org/tumbleweed/repo/oss/
 # which are not touched by YAST or which are already handled by YAST correctly.
 #
 #  files:
