@@ -976,15 +976,14 @@
   defined_by:
     - less
   yast_support:
-    
-#- files:
-#    - /usr/etc/login.defs  
-#  defined_by:
-#    - shadow
-#  yast_support:
-#    - yast2-security
-#    - yast2-users
-#    - yast2
+
+# Planned with https://trello.com/c/9frezJnq/4067-sle15-sp2-new-configuration-file-usr-etc-services
+- files:
+    - /usr/etc/login.defs  
+  defined_by:
+    - shadow
+  yast_support:
+    - yast2
 
 - files:
     - /usr/etc/networks
@@ -993,12 +992,11 @@
     - netcfg
   yast_support:
 
-#- files:
-#    - /usr/etc/services
-#  defined_by:
-#    - netcfg
-#  yast_support:
-#    - yast2
+- files:
+    - /usr/etc/services
+  defined_by:
+    - netcfg
+  yast_support:
 
 - files:
     - /usr/etc/rebootmgr.conf
@@ -1047,13 +1045,14 @@
     - pam
   yast_support:
 
-#- files:
-#    - /usr/etc/pam.d/common-account
-#    - /usr/etc/pam.d/common-auth
-#  defined_by:
-#    - pam
-#  yast_support:
-#    - yast2-auth-client
+# planned with https://trello.com/c/O9yzdXdS/4066-sle15-sp2-new-configuration-file-usr-etc-pamd-common-account-and-usr-etc-pamd-common-auth
+- files:
+    - /usr/etc/pam.d/common-account
+    - /usr/etc/pam.d/common-auth
+  defined_by:
+    - pam
+  yast_support:
+    - yast2-auth-client
     
 - files:
     - /usr/etc/pam.d/chage
