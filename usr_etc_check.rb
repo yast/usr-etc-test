@@ -21,15 +21,17 @@
 # find current contact information at www.suse.com.
 #
 #
-# Checking *-filelists.xml.gz for /usr/etc entries which are currently not
-# handled by YAST correctly.
+# Checking *-filelists.xml.gz for /usr/etc and /etc/*.d entries which are
+# currently not handled by YaST.
 #
-require "rspec"
-require "yaml"
-require "tmpdir"
-require "zlib"
+
+require "open-uri"
 require "rexml/document"
 require "rexml/streamlistener"
+require "tempfile"
+require "uri"
+require "yaml"
+require "zlib"
 
 abort_handler = proc {
   warn "\nAborted"
@@ -40,9 +42,63 @@ abort_handler = proc {
 Signal.trap("INT", abort_handler)
 Signal.trap("TERM", abort_handler)
 
-# use the XML SAX (streaming) parser,
-# the uncompressed Leap 15.1 XML is ~97MB!
-class Listener
+# HACK: for the openSUSE mirroring, the default Ruby implementation forbids
+# the HTTPS -> HTTP redirection for security reasons, unfortunately that's
+# used by the openSUSE mirrors... :-o
+module OpenURI
+  def self.redirectable?(_uri1, _uri2)
+    true
+  end
+end
+
+# a generic HTTP downloader
+class Downloader
+  attr_reader :url
+
+  # Create the downloader for the specified URL (only HTTP/HTTPS is supported)
+  # @param url [String] the URL for downloading
+  def initialize(url)
+    @url = URI(url)
+  end
+
+  # download the file, returns the response body or if a block is given it
+  # passes the response stream to it, handles HTTP redirection automatically
+  def download(&block)
+    puts "Downloading #{url}..."
+
+    if block_given?
+      URI.open(url) { |f| block.call(f) }
+    else
+      URI.open(url, &:read)
+    end
+  end
+end
+
+# RepoMD parser, downloads and parses the main repository index file
+# (repomd.xml) and returns the full path to the filelist.xml.gz file
+class RepoIndexParser
+  attr_reader :repo
+
+  def initialize(repo)
+    @repo = repo
+  end
+
+  # get the full name of the filelist.xml.gz file
+  def filelists
+    downloader = Downloader.new(File.join(repo, "repodata/repomd.xml"))
+    doc = REXML::Document.new(downloader.download)
+    # read the value from XML using XPath
+    path = REXML::XPath.first(doc, "//data[@type='filelists']/location")
+      .attribute("href").value
+    # add the URL prefix to get a complete URL path
+    File.join(repo, path)
+  end
+end
+
+# Collect the file paths from the XML, use the XML SAX (streaming) parser
+# because the uncompressed XML is huge (~100MB!), do not read the whole file
+# into memory!
+class FileListener
   include REXML::StreamListener
 
   attr_reader :files
@@ -62,123 +118,84 @@ class Listener
   def tag_end(tag)
     return unless tag == "file"
 
-    if @file.match(/^\/etc\/\S*\.d\//) || # bsc#1166473
-        @file.start_with?("/usr/etc/")
-      files << @file
-    end
+    # bsc#1166473
+    files << @file if @file.match(/^\/etc\/\S*\.d\//) || @file.start_with?("/usr/etc/")
 
     @in_file_tag = false
   end
 end
 
-# collects the /usr/etc files
-class UsrEtcTestHelper
-  TEST_DIR = __dir__
-  REPOSITORIES_CONF = File.join(TEST_DIR, "repos_conf.yml")
-  TEMPORARY_DIRECTORY = "etc_ust_tmp"
-  WHITELIST = "white-list.yml"
+# collects the etc files from a remote (HTTP) filelist.xml.gz file
+class EtcFilesCollector
+  attr_reader :xml_url
 
-  attr_reader :distribution, :white_list, :tmp_dir
-
-  # New constructor for UsrEtcTestHelper class
-  #
-  # @param [String] directory name containing e.g. the regarding whitelist,...
-  #        (e.g., "Factory",... )
-  def initialize(distribution)
-    @distribution = distribution
+  def initialize(xml_url)
+    @xml_url = xml_url
   end
 
-  def check_user_etc
-    files = []
+  def files
+    listener = FileListener.new
 
-    Dir.mktmpdir("#{TEMPORARY_DIRECTORY}_#{@distribution}_") do |tmp_dir|
-      puts "Test for #{@distribution} will use temporary dir #{tmp_dir}"
+    # directly parse the XML gzipped data while downloading
+    downloader = Downloader.new(xml_url)
+    downloader.download do |stream|
+      reader = Zlib::GzipReader.new(stream)
+      REXML::Document.parse_stream(reader, listener)
+    end
 
-      prepare_distribution(tmp_dir)
-      Dir[File.join(tmp_dir, "/**/*-filelists.xml.gz")].each do |f|
-        files.concat(files_from_xml(f))
+    listener.files
+  end
+end
+
+# compares the found etc files with the known files in the configuration file
+class EtcVerifier
+  attr_reader :files, :config
+
+  def initialize(files, config_file)
+    @files = files
+    @config = YAML.load_file(config_file)
+  end
+
+  def new_entries
+    files.reject do |f|
+      config.any? do |c|
+        c["files"].any? { |glob| File.fnmatch?(glob, f) }
       end
-    end
-    files.uniq!
-    files.sort!
-    puts "following files have to be checked:"
-    puts files
-    puts "Found #{files.size} files"
-    puts "comparing with the white list...."
-    files.delete_if do |file|
-      ret = false
-      @white_list.each do |entry|
-        entry["files"].each do |tag|
-          if !(tag.end_with?("*") && file.start_with?(tag.chomp("*"))) &&
-              file != tag
-            next
-          end
-
-          if !entry["yast_support"] || entry["yast_support"].empty?
-            entry["yast_support"] = ["not used by YAST"]
-          end
-          puts "File #{file} from package #{entry["defined_by"]} has already" \
-               " been checked (#{entry["yast_support"].join(", ")})"
-          ret = true
-        end
-      end
-      ret
-    end
-
-    files
-  end
-
-private
-
-  def files_from_xml(file)
-    puts "Processing #{file}...This could take some minutes...."
-
-    l = Listener.new
-
-    Zlib::GzipReader.open(file) do |gz|
-      REXML::Document.parse_stream(gz, l)
-    end
-
-    l.files
-  end
-
-  # Prepares a testing environment for a given repositories
-  # Directories are named after products and there is a corresponding
-  # configuration in #{REPOSITORIES_CONF} file.
-  def prepare_distribution(tmp_dir)
-    repo_config = YAML.load_file(REPOSITORIES_CONF)
-
-    unless repo_config.key?(@distribution)
-      raise "Cannot find configuration in repo_conf.yml for #{@distribution}"
-    end
-
-    distribution_config = repo_config[@distribution]
-    unless distribution_config["repository"]
-      raise "Cannot find 'repository' in configuration for '#{@distribution}'"
-    end
-
-    @white_list = YAML.load_file(File.join(TEST_DIR, @distribution, WHITELIST))
-    puts "white list entries: #{@white_list.size}"
-
-    puts "Downloading *-filelists.xml.gz from repo " \
-         "#{distribution_config["repository"]}"
-    command = "/usr/bin/wget -r -nd --no-parent -A '*-filelists.xml.gz' " \
-      "#{distribution_config["repository"] + "repodata/"}"
-
-    puts "With command #{command}"
-    Dir.chdir(tmp_dir) do
-      system(command)
     end
   end
 end
 
-raise "No distrubution (e.g. 'Factory') is given." unless ARGV[0]
+# the main application
+class Application
+  attr_reader :repo_url, :config_file
 
-test = UsrEtcTestHelper.new(ARGV[0])
-new_entries = test.check_user_etc
+  def initialize
+    @repo_url = ARGV[0]
+    @config_file = ARGV[1]
 
-unless new_entries.empty?
-  puts "Following files/directories have to be checked:\n"
-  puts new_entries.join("\n")
-  raise "Please check new configuration files."
+    return if repo && config_file
+
+    warn "Missing repository or config file parameter!"
+    exit 1
+  end
+
+  def run
+    # collect the config files
+    repo_parser = RepoIndexParser.new(repo_url)
+    collector = EtcFilesCollector.new(repo_parser.filelists)
+    etc_files = collector.files.uniq.sort
+
+    # compare them with the white list
+    verifier = EtcVerifier.new(etc_files, config_file)
+    unknown = verifier.new_entries
+
+    return if unknown.empty?
+
+    puts "Found #{unknown.size} new files/directories, please check them:\n\n"
+    puts unknown
+    exit 1
+  end
 end
+
+app = Application.new
+app.run
