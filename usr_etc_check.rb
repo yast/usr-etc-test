@@ -85,6 +85,7 @@ class RepoIndexParser
   # get the full name of the filelist.xml.gz file
   def filelists
     downloader = Downloader.new(File.join(repo, "repodata/repomd.xml"))
+    # the repomd.xml file is small, we can read it whole into memory
     doc = REXML::Document.new(downloader.download)
     # read the value from XML using XPath
     path = REXML::XPath.first(doc, "//data[@type='filelists']/location")
@@ -95,7 +96,7 @@ class RepoIndexParser
 end
 
 # Collect the file paths from the XML, use the XML SAX (streaming) parser
-# because the uncompressed XML is huge (~100MB!), do not read the whole file
+# because the uncompressed XML is huge (>650MB!), do not read the whole file
 # into memory!
 class FileListener
   include REXML::StreamListener
@@ -138,19 +139,22 @@ class EtcFilesCollector
 
   def initialize(xml_url)
     @xml_url = xml_url
+    @listener = FileListener.new
   end
 
   def files
-    listener = FileListener.new
-
     # directly parse the XML gzipped data while downloading
     downloader = Downloader.new(xml_url)
     downloader.download do |stream|
       reader = Zlib::GzipReader.new(stream)
-      REXML::Document.parse_stream(reader, listener)
+      REXML::Document.parse_stream(reader, @listener)
     end
 
-    listener.files
+    @listener.files
+  end
+
+  def packages
+    @listener.packages
   end
 end
 
@@ -196,7 +200,7 @@ class Application
     verifier = EtcVerifier.new(etc_files, config_file)
     unknown = verifier.new_entries
 
-    puts "\n\n"
+    puts "\nProcessed #{collector.packages} packages\n\n"
 
     if unknown.empty?
       puts "OK, nothing new found"
