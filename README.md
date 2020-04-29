@@ -1,6 +1,8 @@
 /usr/etc and /etc/\*/\*.d check
 ==============================
 
+File check result: &nbsp; [![Build Status](https://travis-ci.com/yast/yast2-usr-etc-test.svg?branch=master)](https://travis-ci.com/yast/yast2-usr-etc-test)
+
 This project checks and reports all changes in `/usr/etc` and `/etc/*/*.d`
 in order to give the YaST team the possibility to adapt the YAST modules to that
 changes too.
