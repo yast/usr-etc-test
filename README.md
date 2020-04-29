@@ -20,3 +20,9 @@ changes too.
 ## Packages Required for Running Test
 
 - A Ruby interpreter
+
+## Travis Setup
+
+The check is executed once a week as a [Travis cron job](
+https://docs.travis-ci.com/user/cron-jobs/), you can check the [build job
+history](https://travis-ci.com/github/yast/yast2-usr-etc-test/builds).
