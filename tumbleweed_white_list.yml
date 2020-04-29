@@ -1100,3 +1100,9 @@
   defined_by:
     - kbd
   yast_support:
+
+- files:
+    - /etc/xdg/Xwayland-session.d/00-xrdb
+  defined_by:
+    - gnome-settings-daemon
+  yast_support:
