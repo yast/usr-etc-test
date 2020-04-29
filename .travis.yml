@@ -1,14 +1,13 @@
-sudo: required
-language: bash
-services:
-  - docker
+language: ruby
 
-before_install:
-  - docker build -t yast-usr-etc-test-image .
-  # list the installed packages (just for easier debugging)
-  - docker run --rm -it yast-usr-etc-test-image rpm -qa | sort
+rvm:
+  - 2.5.7
 
+# run the check only when started from cron
 script:
-# scan for changes arount /usr/etc and /etc/<program>.d
-  - docker run -it -e TRAVIS=1 -e TRAVIS_JOB_ID="$TRAVIS_JOB_ID" yast-usr-etc-test-image bash -c "./usr_etc_check.rb Factory"
-
+  - |
+    if [ "$TRAVIS_EVENT_TYPE" = "cron" ]; then
+      ./check_tumbleweed
+    else
+      echo "Not started from Travis cron, skipping the check"
+    fi

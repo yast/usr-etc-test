@@ -1,0 +1,3 @@
+#! /bin/sh
+
+./usr_etc_check.rb https://download.opensuse.org/tumbleweed/repo/oss tumbleweed_white_list.yml

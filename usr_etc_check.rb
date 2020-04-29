@@ -28,7 +28,6 @@
 require "open-uri"
 require "rexml/document"
 require "rexml/streamlistener"
-require "tempfile"
 require "uri"
 require "yaml"
 require "zlib"
@@ -42,9 +41,9 @@ abort_handler = proc {
 Signal.trap("INT", abort_handler)
 Signal.trap("TERM", abort_handler)
 
-# HACK: for the openSUSE mirroring, the default Ruby implementation forbids
-# the HTTPS -> HTTP redirection for security reasons, unfortunately that's
-# used by the openSUSE mirrors... :-o
+# HACK: this is needed for the openSUSE mirroring, the default Ruby
+# implementation forbids the HTTPS -> HTTP redirection for security reasons,
+# unfortunately that's used by the openSUSE mirrors... :-o
 module OpenURI
   def self.redirectable?(_uri1, _uri2)
     true
@@ -101,14 +100,22 @@ end
 class FileListener
   include REXML::StreamListener
 
-  attr_reader :files
+  attr_reader :files, :packages
 
   def initialize
     @files = []
+    # count the packages to show some progress
+    @packages = 0
   end
 
   def tag_start(tag, _attrs)
     @in_file_tag = true if tag == "file"
+
+    return if tag != "package"
+
+    @packages += 1
+    # print a progress dot for each 1000 processed packages
+    print "." if @packages % 1000 == 0
   end
 
   def text(data)
@@ -173,7 +180,7 @@ class Application
     @repo_url = ARGV[0]
     @config_file = ARGV[1]
 
-    return if repo && config_file
+    return if repo_url && config_file
 
     warn "Missing repository or config file parameter!"
     exit 1
@@ -189,11 +196,15 @@ class Application
     verifier = EtcVerifier.new(etc_files, config_file)
     unknown = verifier.new_entries
 
-    return if unknown.empty?
+    puts "\n\n"
 
-    puts "Found #{unknown.size} new files/directories, please check them:\n\n"
-    puts unknown
-    exit 1
+    if unknown.empty?
+      puts "OK, nothing new found"
+    else
+      puts "Found #{unknown.size} new files/directories, please check them:\n\n"
+      puts unknown
+      exit 1
+    end
   end
 end
 
