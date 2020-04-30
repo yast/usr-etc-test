@@ -1,7 +1,7 @@
 /usr/etc and /etc/\*/\*.d check
 ==============================
 
-File check result: &nbsp; [![Build Status](https://travis-ci.com/yast/yast2-usr-etc-test.svg?branch=master)](https://travis-ci.com/yast/yast2-usr-etc-test)
+File check result: &nbsp; [![Build Status](https://travis-ci.com/yast/usr-etc-test.svg?branch=master)](https://travis-ci.com/yast/usr-etc-test)
 
 This project checks and reports all changes in `/usr/etc` and `/etc/*/*.d`
 in order to give the YaST team the possibility to adapt the YAST modules to that
@@ -25,4 +25,4 @@ changes too.
 
 The check is executed once a week as a [Travis cron job](
 https://docs.travis-ci.com/user/cron-jobs/), you can check the [build job
-history](https://travis-ci.com/github/yast/yast2-usr-etc-test/builds).
+history](https://travis-ci.com/github/yast/usr-etc-test/builds).
