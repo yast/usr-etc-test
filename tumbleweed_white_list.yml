@@ -1,0 +1,1108 @@
+# 
+# This file describes a white list of files in /usr/etc and /etc found in
+# https://download.opensuse.org/tumbleweed/repo/oss/
+# which are not touched by YAST or which are already handled by YAST correctly.
+#
+#  files:
+#    < files/dirs in /usr/etc >
+#  defined_by:
+#    < none YAST packages which contain/touch these files >
+#   yast_support:
+#    < YAST packages which handle these files >
+#
+
+- files:
+    - /etc/NetworkManager/dispatcher.d*
+  defined_by:
+    - NetworkManager
+  yast_support:
+
+- files:
+    - /etc/X11/xim.d*
+  defined_by:
+    - fcitx
+  yast_support:
+
+- files:
+    - /etc/X11/xinit/xinitrc.d*
+  defined_by:
+    - libcanberra-gtk-module-common
+    - spacenavd
+    - systemd
+    - virtualbox-guest-x11
+    - xdg-user-dirs
+    - xinit
+  yast_support:
+
+- files:
+    - /etc/X11/xorg.conf.d*
+  defined_by:
+    - systemd
+    - xorg-x11-Xvnc-module
+    - xorg-x11-driver-video
+    - xorg-x11-server
+    - xpra
+  yast_support:
+    - yast2
+
+- files:
+    - /etc/containers/registries.d*
+  defined_by:
+    - libcontainers-common
+  yast_support:
+
+- files:
+    - /etc/crio/crio.conf.d*
+  defined_by:
+    - cri-o
+  yast_support:
+
+- files:
+    - /etc/crio/crio.conf.d*
+  defined_by:
+    - cri-o
+  yast_support:
+
+- files:
+    - /etc/cron.d*
+  defined_by:
+    - atop-daemon
+    - cacti
+    - logdigest
+    - matomo
+    - nextcloud
+    - "..."
+  yast_support:
+    - yast2-ntp-client
+
+- files:
+    - /etc/alsa.d*
+    - /etc/alsa/conf.d*
+  defined_by:
+    - alsa-plugins
+  yast_support:
+
+- files:
+    - /etc/ant.d*
+  defined_by:
+    - ant
+  yast_support:
+
+- files:
+    - /etc/apache2/conf.d*
+    - /etc/apache2/mod_nss.d*
+    - /etc/apache2/mod_security2.d*
+    - /etc/apache2/vhosts.d*
+  defined_by:
+    - adminer
+    - apache2*
+  yast_support:
+
+- files:
+    - /etc/apparmor.d*
+  defined_by:
+    - apparmor-abstractions
+  yast_support:
+    - yast2-apparmor
+
+- files:
+    - /etc/audisp/plugins.d*
+  defined_by:
+    - audit
+  yast_support:
+
+- files:
+    - /etc/audit/rules.d*
+  defined_by:
+    - audit
+  yast_support:
+    - yast2-audit-laf
+  
+- files:
+    - /etc/avocado*
+  defined_by:
+    - avocado-common
+  yast_support:
+  
+- files:
+    - /etc/bash_completion.d*
+  defined_by:
+    - bash
+  yast_support:
+    - yast2
+
+- files:
+    - /etc/bashrc.d*
+  defined_by:
+    - hxtools-profile
+  yast_support:
+  
+- files:
+    - /etc/bumblebee/xorg.conf.d*
+  defined_by:
+    - bumblebee
+  yast_support:
+  
+- files:
+    - /etc/cloud/cloud.cfg.d*
+  defined_by:
+    - cloud-init
+  yast_support:
+  
+- files:
+    - /etc/clustduct.d*
+  defined_by:
+    - clustduct
+  yast_support:
+
+- files:
+    - /etc/clustershell/*
+  defined_by:
+    - clustershell
+  yast_support:
+
+- files:
+    - /etc/cni/net.d*
+  defined_by:
+    - cilium-cni
+  yast_support:
+
+- files:
+    - /etc/cobbler/settings.d*
+  defined_by:
+    - cobbler
+  yast_support:
+  
+- files:
+    - /etc/conf.d*
+  defined_by:
+    - sslh
+  yast_support:
+
+- files:
+    - /etc/ctdb/nfs-checks.d*
+  defined_by:
+    - ctdb
+  yast_support:
+  
+- files:
+    - /etc/dbus-1/system.d*
+  defined_by:
+    - ModemManager
+  yast_support:
+  
+- files:
+    - /etc/dconf/db/ibus.d*
+  defined_by:
+    - dconf
+  yast_support:
+
+- files:
+    - /etc/dehydrated/postrun-hooks.d*
+  defined_by:
+    - dehydrated
+  yast_support:
+
+- files:
+    - /etc/depmod.d*
+  defined_by:
+    - suse-module-tools
+  yast_support:
+
+- files:
+    - /etc/dhcp/dhclient-exit-hooks.d*
+  defined_by:
+    - cloud-init
+  yast_support:
+
+- files:
+    - /etc/dhcp/dhclient.d*
+  defined_by:
+    - chrony
+  yast_support:
+  
+- files:
+    - /etc/dnf*
+  defined_by:
+    - dnf-conf
+  yast_support:
+
+- files:
+    - /etc/dnscrypt-proxy.conf.d*
+  defined_by:
+    - dnscrypt-proxy
+  yast_support:
+
+- files:
+    - /etc/dnsmasq.d*
+  defined_by:
+    - dnsmasq
+  yast_support:
+
+- files:
+    - /etc/dovecot/conf.d*
+  defined_by:
+    - dovecot
+  yast_support:
+
+- files:
+    - /etc/drbd.d*
+  defined_by:
+    - drbd-utils
+  yast_support:
+    - yast2-drbd
+
+- files:
+    - /etc/dracut.conf.d*
+  defined_by:
+    - dracut
+  yast_support:
+
+- files:
+    - /etc/etckeeper/commit.d*
+    - /etc/etckeeper/init.d*
+    - /etc/etckeeper/list-installed.d*
+    - /etc/etckeeper/post-install.d*
+    - /etc/etckeeper/pre-commit.d*
+    - /etc/etckeeper/pre-install.d*
+    - /etc/etckeeper/unclean.d*
+    - /etc/etckeeper/uninit.d*
+    - /etc/etckeeper/update-ignore.d*
+    - /etc/etckeeper/vcs.d*
+  defined_by:
+    - etckeeper
+  yast_support:
+  
+- files:
+    - /etc/fail2ban/action.d*
+    - /etc/fail2ban/filter.d*
+  defined_by:
+    - fail2ban
+  yast_support:
+  
+- files:
+    - /etc/fedmsg.d*
+  defined_by:
+    - python-fedmsg-base
+  yast_support:
+
+- files:
+    - /etc/firebird/firebird.conf.d*
+  defined_by:
+    - firebird
+  yast_support:
+  
+- files:
+    - /etc/fonts/conf.d*
+  defined_by:
+    - fontconfig
+  yast_support:
+
+- files:
+    - /etc/fwupd/remotes.d*
+  defined_by:
+    - fwupd
+  yast_support:
+
+- files:
+    - /etc/ganglia/conf.d*
+  defined_by:
+    - ganglia-gmond
+  yast_support:
+
+- files:
+    - /etc/gdbinit.d*
+  defined_by:
+    - gdb
+  yast_support:
+
+- files:
+    - /etc/gnuradio/conf.d*
+  defined_by:
+    - gnuradio
+  yast_support:
+
+- files:
+    - /etc/grub.d*
+  defined_by:
+    - grub2
+  yast_support:
+    - yast2-bootloader
+
+- files:
+    - /etc/gss/mech.d*
+  defined_by:
+    - gssntlmssp
+  yast_support:
+
+- files:
+    - /etc/ha.d*
+  defined_by:
+    - ldirectord
+  yast_support:
+    - yast2-iplb
+
+- files:
+    - /etc/i2pd/tunnels.conf.d*
+  defined_by:
+    - i2pd
+  yast_support:
+
+- files:
+    - /etc/icinga2/conf.d*
+    - /etc/icinga2/zones.d*    
+  defined_by:
+    - icinga2
+  yast_support:
+
+- files:
+    - /etc/imx-loader.d*
+  defined_by:
+    - imx-usb-loader
+  yast_support:
+
+- files:
+    - /etc/init.d*
+  defined_by:
+    - aaa_base
+  yast_support:
+
+- files:
+    - /etc/ipsec.d*
+  defined_by:
+    - strongswan-ipsec
+  yast_support:
+
+- files:
+    - /etc/java/security/security.d*
+  defined_by:
+    - bouncycastle
+  yast_support:
+
+- files:
+    - /etc/jupyter*
+  defined_by:
+    - jupyter-bqplot
+  yast_support:
+
+- files:
+    - /etc/kernel/postinst.d*
+    - /etc/kernel/prerm.d*
+  defined_by:
+    - dkms
+  yast_support:
+
+- files:
+    - /etc/laptop-mode/conf.d*
+  defined_by:
+    - laptop-mode-tools
+  yast_support:
+
+- files:
+    - /etc/latrace.d*
+  defined_by:
+    - latrace
+  yast_support:
+
+- files:
+    - /etc/ld.so.conf.d*
+  defined_by:
+    - Herwig-libs
+  yast_support:
+
+- files:
+    - /etc/libblockdev/conf.d*
+  defined_by:
+    - libbd_lvm-dbus2
+  yast_support:
+
+- files:
+    - /etc/libibverbs.d*
+  defined_by:
+    - libibverbs
+  yast_support:
+
+- files:
+    - /etc/lighttpd/conf.d*
+    - /etc/lighttpd/vhosts.d*
+  defined_by:
+    - dehydrated-lighttpd
+  yast_support:
+
+- files:
+    - /etc/lirc/lircd.conf.d*
+  defined_by:
+    - lirc-core
+  yast_support:
+
+- files:
+    - /etc/lldpd.d*
+  defined_by:
+    - lldpd
+  yast_support:
+
+- files:
+    - /etc/logrotate.d*
+  defined_by:
+    - acct
+  yast_support:
+
+- files:
+    - /etc/lsb-release.d*
+  defined_by:
+    - lsb
+  yast_support:
+
+- files:
+    - /etc/lsm/pluginconf.d*
+  defined_by:
+    - libstoragemgmt
+  yast_support:
+
+- files:
+    - /etc/mercurial/hgrc.d*
+  defined_by:
+    - mercurial
+  yast_support:
+
+- files:
+    - /etc/modprobe.d*
+  defined_by:
+    - avrdude
+  yast_support:
+    - yast2-sound
+    - yast2-tune
+    - yast2-core
+
+- files:
+    - /etc/mosquitto/conf.d*
+  defined_by:
+    - mosquitto
+  yast_support:
+  
+- files:
+    - /etc/munin/plugin-conf.d*
+  defined_by:
+    - munin
+  yast_support:
+  
+- files:
+    - /etc/my.cnf.d*
+  defined_by:
+    - mariadb
+  yast_support:
+
+- files:
+    - /etc/named.d*
+  defined_by:
+    - bind-utils
+  yast_support:
+    - yast2-dns-server
+    - yast2
+
+- files:
+    - /etc/netconfig.d*
+  defined_by:
+    - cloud-netconfig-azure
+    - cloud-netconfig-ec2
+    - sysconfig-netconfig
+  yast_support:
+
+- files:
+    - /etc/nginx*
+  defined_by:
+    - nginx
+  yast_support:
+  
+- files:
+    - /etc/nrpe.d*
+  defined_by:
+    - monitoring-plugins-bonding
+  yast_support:
+
+- files:
+    - /etc/ovirt-guest-agent/hooks.d*
+  defined_by:
+    - ovirt-guest-agent-common
+  yast_support:
+
+- files:
+    - /etc/owasp-modsecurity-crs/rules.d*
+  defined_by:
+    - owasp-modsecurity-crs
+  yast_support:
+
+- files:
+    - /etc/pam.d*
+  defined_by:
+    - at
+    - cinnamon-screensaver
+    - courier-imap
+    - cronie
+    - cups
+    - dovecot
+    - enlightenment
+    - freeradius-server
+    - frr
+    - gdm
+    - i3lock
+    - kbd
+    - krb5-client
+    - kscreenlocker
+    - libgnomesu
+    - lightdm
+    - mate-screensaver
+    - mrsh-server
+    - open-vm-tools
+    - openssh
+    - openwsman-server
+    - pam
+    - pam-config
+    - pam_pkcs11
+    - policycoreutils
+    - policycoreutils-newrole
+    - polkit
+    - postfix
+    - ppp
+    - proftpd
+    - pure-ftpd
+    - quagga
+    - rstudio-server
+    - samba
+    - sblim-sfcb
+    - screen
+    - sddm
+    - sendmail
+    - shadow
+    - squid
+    - sssd
+    - sudo
+    - swaylock
+    - systemd
+    - tog-pegasus
+    - util-linux
+    - uucp
+    - vsftpd
+    - xdm
+    - xen-tools
+    - xfce4-screensaver
+    - xlockmore
+    - xorg-x11-Xvnc
+    - xpra
+    - xrdp
+    - xscreensaver
+  yast_support:
+    - yast2-auth-client
+    - yast2-samba-client
+
+- files:
+    - /etc/pcp*
+  defined_by:
+    - pcp
+  yast_support:
+
+- files:
+    - /etc/permissions.d*
+  defined_by:
+    - filesystem
+  yast_support:
+
+- files:
+    - /etc/php7/conf.d*
+    - /etc/lighttpd/vhosts.d*
+    - /etc/php7/fpm/php-fpm.d*
+  defined_by:
+    - php-mapi
+  yast_support:
+
+- files:
+    - /etc/pm/sleep.d*
+  defined_by:
+    - razercfg
+  yast_support:
+
+- files:
+    - /etc/polkit-1/rules.d*
+  defined_by:
+    - polkit
+  yast_support:
+
+- files:
+    - /etc/popt.d*
+  defined_by:
+    - pesign
+  yast_support:
+
+- files:
+    - /etc/ppp*
+  defined_by:
+    - ppp*
+  yast_support:
+
+- files:
+    - /etc/prelude-correlator/conf.d*
+  defined_by:
+    - prelude-correlator
+  yast_support:
+  
+- files:
+    - /etc/products.d*
+  defined_by:
+    - "release packages"
+  yast_support:
+    - "products information"
+
+- files:
+    - /etc/profile.d*
+  defined_by:
+    - aaa_base
+  yast_support:
+
+- files:
+    - /etc/proftpd/conf.d*
+  defined_by:
+    - proftpd
+  yast_support:
+  
+- files:
+    - /etc/pulse/client.conf.d*
+    - /etc/pulse/daemon.conf.d*
+  defined_by:
+    - libpulse0
+  yast_support:
+    - yast2-sound
+  
+- files:
+    - /etc/pyenv.d*
+  defined_by:
+    - pyenv
+  yast_support:
+
+- files:
+    - /etc/raddb/policy.d*
+  defined_by:
+    - freeradius-server
+  yast_support:
+
+- files:
+    - /etc/ras/dimm_labels.d*
+  defined_by:
+    - rasdaemon
+  yast_support:
+
+- files:
+    - /etc/reader.conf.d*
+  defined_by:
+    - pcsc-ccid
+  yast_support:
+
+- files:
+    - /etc/request-key.d*
+  defined_by:
+    - cifs-utils
+  yast_support:
+
+- files:
+    - /etc/rkhunter.d*
+  defined_by:
+    - rkhunter
+  yast_support:
+
+- files:
+    - /etc/rsyslog.d*
+  defined_by:
+    - cloud-init
+  yast_support:
+  
+- files:
+    - /etc/salt/master.d*
+  defined_by:
+    - salt-master
+  yast_support:
+  
+- files:
+    - /etc/sane.d*
+  defined_by:
+    - "e.g. hplip-sane"
+  yast_support:
+    - yast2-scanner
+    
+- files:
+    - /etc/security/limits.d*
+  defined_by:
+    - libvma
+  yast_support:
+  
+- files:
+    - /etc/security/namespace.d*
+  defined_by:
+    - pam
+  yast_support:
+
+- files:
+    - /etc/signon-ui/webkit-options.d*
+  defined_by:
+    - kaccounts-providers
+  yast_support:
+
+- files:
+    - /etc/slp.reg.d*
+  defined_by:
+    - bind
+  yast_support:
+    - yast2-instserver
+    - yast2-slp
+    - yast2-slp-server
+  
+- files:
+    - /etc/slurm/layouts.d*
+  defined_by:
+    - slurm-config
+  yast_support:
+  
+- files:
+    - /etc/strongswan.d*
+  defined_by:
+    - strongswan-hmac
+  yast_support:
+  
+- files:
+    - /etc/sudoers.d*
+  defined_by:
+    - ceph-osd
+    - cephadm
+    - monitoring-plugins-smart
+    - ovirt-guest-agent-common
+    - sudo
+  yast_support:
+    - yast2-sudo
+  
+- files:
+    - /etc/svxlink/svxlink.d*
+  defined_by:
+    - svxlink-server
+  yast_support:
+
+- files:
+    - /etc/sway/security.d*
+  defined_by:
+    - sway
+  yast_support:
+
+- files:
+    - /etc/sysconfig/SuSEfirewall2.d*
+  defined_by:
+    - cfengine
+    - docker-distribution-registry
+    - filesystem
+    - lighttpd
+    - nrpe
+    - salt-master
+    - samba
+    - samba-client
+    - sblim-sfcb
+    - siproxd
+    - "..."
+  yast_support:
+    - yast2
+
+- files:
+    - /etc/sysconfig/network/if-down.d*
+    - /etc/sysconfig/network/if-up.d*
+  defined_by:
+    - avahi-autoipd
+    - avahi
+  yast_support:
+
+- files:
+    - /etc/sysctl.d*
+  defined_by:
+    - filesystem
+    - "..."
+  yast_support:
+    - yast2-network
+    - yast2
+
+- files:
+    - /etc/systemd/journald.conf.d*
+  defined_by:
+    - rsyslog
+  yast_support:
+
+- files:
+    - /etc/tlp.d*
+  defined_by:
+    - tlp
+  yast_support:
+
+- files:
+    - /etc/tomcat/conf.d*
+  defined_by:
+    - tomcat
+  yast_support:
+  
+- files:
+    - /etc/udev/rules.d*
+  defined_by:
+    - cloud-netconfig-azure
+    - cloud-netconfig-ec2
+    - clustduct
+    - "..."
+  yast_support:
+    - yast2-network
+    - yast2-installation
+    - yast2-country
+    - yast2-printer
+    - autoyast2
+
+- files:
+    - /etc/ufw/applications.d*
+  defined_by:
+    - mosh
+  yast_support:
+
+- files:
+    - /etc/unbound/conf.d*
+    - /etc/unbound/keys.d*
+    - /etc/unbound/local.d*
+  defined_by:
+    - unbound
+  yast_support:
+  
+- files:
+    - /etc/wgetpaste.d*
+  defined_by:
+    - wgetpaste
+  yast_support:
+
+- files:
+    - /etc/xdg/virt-builder/repos.d*
+  defined_by:
+    - guestfs-tools
+  yast_support:
+
+- files:
+    - /etc/xinetd.d/*
+  defined_by:
+    - amanda
+    - firebird-server
+    - nrpe
+  yast_support:
+    - yast2-scanner
+
+- files:
+    - /etc/xml/catalog.d*
+  defined_by:
+    - daps
+  yast_support:
+  
+- files:
+    - /etc/xpra/conf.d*
+  defined_by:
+    - xpra
+  yast_support:
+
+- files:
+    - /etc/zabbix/zabbix_agentd.d*
+  defined_by:
+    - pcp-export-zabbix-agent
+  yast_support:
+
+- files:
+    - /etc/zsh_completion.d*
+  defined_by:
+    - aws-cli
+  yast_support:
+
+- files:
+    - /etc/zypp/apt-packagemap.d*
+    - /etc/zypp/credentials.d*
+    - /etc/zypp/systemCheck.d*
+  defined_by:
+    - SUSEConnect
+    - libzypp
+    - zypper
+    - zypper-aptitude
+  yast_support:
+    - yast2-registration
+    - yast2-pkg-bindings
+    - yast2-packager
+
+- files:
+    - /usr/etc/default
+    - /usr/etc/default/runuser
+    - /usr/etc/default/su
+  defined_by:
+    - util-linux
+  yast_support:
+
+- files:
+    - /usr/etc/ethers
+  defined_by:
+    - netcfg
+  yast_support:
+
+- files:
+    - /usr/etc/fluent-bit
+    - /usr/etc/fluent-bit/fluent-bit.conf
+    - /usr/etc/fluent-bit/parsers.conf
+    - /usr/etc/fluent-bit/parsers_ambassador.conf
+    - /usr/etc/fluent-bit/parsers_cinder.conf
+    - /usr/etc/fluent-bit/parsers_extra.conf
+    - /usr/etc/fluent-bit/parsers_java.conf
+    - /usr/etc/fluent-bit/parsers_openstack.conf
+    - /usr/etc/fluent-bit/plugins.conf
+  defined_by:
+    - fluent-bit
+  yast_support:
+
+- files:
+    - /usr/etc/hanadb_exporter
+  defined_by:
+    - hanadb_exporter
+  yast_support:
+    
+- files:
+    - /usr/etc/kubicd
+    - /usr/etc/kubicd/kubicd.conf
+    - /usr/etc/kubicd/rbac.conf
+  defined_by:
+    - kubicd
+  yast_support:
+
+- files:
+    - /usr/etc/lesskey
+    - /usr/etc/lesskey.bin
+  defined_by:
+    - less
+  yast_support:
+
+# Planned with https://trello.com/c/9frezJnq/4067-sle15-sp2-new-configuration-file-usr-etc-services
+- files:
+    - /usr/etc/login.defs  
+  defined_by:
+    - shadow
+  yast_support:
+    - yast2
+
+- files:
+    - /usr/etc/networks
+    - /usr/etc/protocols
+  defined_by:
+    - netcfg
+  yast_support:
+
+- files:
+    - /usr/etc/services
+  defined_by:
+    - netcfg
+  yast_support:
+
+- files:
+    - /usr/etc/rebootmgr.conf
+  defined_by:
+    - rebootmgr
+  yast_support:
+    
+- files:
+    - /usr/etc/registry
+    - /usr/etc/registry/auth_config.yml
+    - /usr/etc/registry/config.yml
+    - /usr/etc/registry/config.yml.docker_auth
+    - /usr/etc/registry/config.yml.portus
+  defined_by:
+    - container-registry-systemd
+  yast_support:
+
+- files:
+    - /usr/etc/transactional-update.conf
+  defined_by:
+    - transactional-update
+  yast_support:
+
+- files:
+    - /usr/etc/xdg
+    - /usr/etc/xdg/autostart
+    - /usr/etc/xdg/autostart/nm-tray-autostart.desktop
+  defined_by:
+    - nm-tray
+  yast_support:
+
+- files:
+    - /usr/etc/xob
+    - /usr/etc/xob/styles.cfg
+  defined_by:
+    - xob
+  yast_support:
+
+- files:
+    - /usr/etc/pam.d
+    - /usr/etc/pam.d/common-password
+    - /usr/etc/pam.d/common-session
+    - /usr/etc/pam.d/other
+    - /usr/etc/securetty
+  defined_by:
+    - pam
+  yast_support:
+
+# planned with https://trello.com/c/O9yzdXdS/4066-sle15-sp2-new-configuration-file-usr-etc-pamd-common-account-and-usr-etc-pamd-common-auth
+- files:
+    - /usr/etc/pam.d/common-account
+    - /usr/etc/pam.d/common-auth
+  defined_by:
+    - pam
+  yast_support:
+    - yast2-auth-client
+    
+- files:
+    - /usr/etc/pam.d/chage
+    - /usr/etc/pam.d/chfn
+    - /usr/etc/pam.d/chpasswd
+    - /usr/etc/pam.d/chsh
+    - /usr/etc/pam.d/groupadd
+    - /usr/etc/pam.d/groupdel
+    - /usr/etc/pam.d/groupmod
+    - /usr/etc/pam.d/newusers
+    - /usr/etc/pam.d/passwd
+    - /usr/etc/pam.d/useradd
+    - /usr/etc/pam.d/userdel
+    - /usr/etc/pam.d/usermod
+  defined_by:
+    - shadow
+  yast_support:
+
+- files:
+    - /usr/etc/pam.d/kde
+  defined_by:
+    - kscreenlocker
+  yast_support:
+    
+- files:
+    - /usr/etc/pam.d/login
+    - /usr/etc/pam.d/remote
+    - /usr/etc/pam.d/runuser
+    - /usr/etc/pam.d/runuser-l    
+    - /usr/etc/pam.d/su
+    - /usr/etc/pam.d/su-l
+  defined_by:
+    - util-linux
+  yast_support:
+
+- files:
+    - /usr/etc/pam.d/sudo
+    - /usr/etc/pam.d/sudo-i    
+  defined_by:
+    - sudo
+  yast_support:
+
+- files:
+    - /usr/etc/pam.d/vlock
+  defined_by:
+    - kbd
+  yast_support:
+
+- files:
+    - /etc/xdg/Xwayland-session.d/00-xrdb
+  defined_by:
+    - gnome-settings-daemon
+  yast_support:

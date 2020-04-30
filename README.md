@@ -1,26 +1,28 @@
-/usr/etc check
-===============
+/usr/etc and /etc/\*/\*.d check
+==============================
 
-This project checks and reports all changes around /usr/etc in order to
-give the YAST team the possibility to adapt the YAST modules to the regarding
+File check result: &nbsp; [![Build Status](https://travis-ci.com/yast/yast2-usr-etc-test.svg?branch=master)](https://travis-ci.com/yast/yast2-usr-etc-test)
+
+This project checks and reports all changes in `/usr/etc` and `/etc/*/*.d`
+in order to give the YaST team the possibility to adapt the YAST modules to that
 changes too.
 
 ## Workflow
 
-- A rspec test is defined for each single repository/distribution which has
-  to be checked.
-- Run tests with `rake test:unit` or manually one by one.
-- Each test
-    -- downloads *-filelists.xml.gz from the given repository defined
-       in repos_conf.yml.
-    -- extracts a list of all /usr/etc files.
-    -- compares this list with the white-list defined in
-       <distribution>/white-list.yml.
-    -- reports new /usr/etc entries which has be be checked by the YAST team.
+- Run test with `./usr_etc_check.rb <repository_url> <whitelist.yml>`
+- Example: `./usr_etc_check.rb https://download.opensuse.org/tumbleweed/repo/oss tumbleweed_white_list.yml`
+- The test
+  - Downloads the `*-filelists.xml.gz` from the given repository
+  - Extracts a list of all configuration files in `/etc/*/*.d` and `/usr/etc`
+  - Compares this list with the white list YAML file
+  - Reports the new entries which where not found
 
 ## Packages Required for Running Test
 
-- rubygem(rspec)
-- rubygem(yast-rake)
-- wget
+- A Ruby interpreter
 
+## Travis Setup
+
+The check is executed once a week as a [Travis cron job](
+https://docs.travis-ci.com/user/cron-jobs/), you can check the [build job
+history](https://travis-ci.com/github/yast/yast2-usr-etc-test/builds).
