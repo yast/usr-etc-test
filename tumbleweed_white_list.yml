@@ -977,7 +977,7 @@
     - less
   yast_support:
 
-# Planned with https://trello.com/c/9frezJnq/4067-sle15-sp2-new-configuration-file-usr-etc-services
+# Support implemented at https://github.com/yast/yast-yast2/pull/988
 - files:
     - /usr/etc/login.defs  
   defined_by:
