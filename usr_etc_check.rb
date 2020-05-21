@@ -104,30 +104,30 @@ class FileListener
   attr_reader :files, :packages
 
   def initialize
-    @files = []
+    @files = {}
     # count the packages to show some progress
     @packages = 0
   end
 
-  def tag_start(tag, _attrs)
-    @in_file_tag = true if tag == "file"
-
-    return if tag != "package"
-
-    @packages += 1
-    # print a progress dot for each 1000 processed packages
-    print "." if @packages % 1000 == 0
+  def tag_start(tag, attrs)
+    case tag
+    when "file"
+      @in_file_tag = true
+    when "package"
+      @package = attrs["name"]
+      @packages += 1
+      # print a progress dot for each 1000 processed packages
+      print "." if @packages % 1000 == 0
+    end
   end
 
   def text(data)
-    @file = data if @in_file_tag
-  end
-
-  def tag_end(tag)
-    return unless tag == "file"
+    return unless @in_file_tag
 
     # bsc#1166473
-    files << @file if @file.match(/^\/etc\/\S*\.d\//) || @file.start_with?("/usr/etc/")
+    if data.match(/^\/etc\/\S*\.d\//) || data.start_with?("/usr/etc/")
+      files[data] = @package
+    end
 
     @in_file_tag = false
   end
@@ -168,7 +168,7 @@ class EtcVerifier
   end
 
   def new_entries
-    files.reject do |f|
+    files.reject do |f, p|
       config.any? do |c|
         c["files"].any? { |glob| File.fnmatch?(glob, f) }
       end
@@ -194,10 +194,9 @@ class Application
     # collect the config files
     repo_parser = RepoIndexParser.new(repo_url)
     collector = EtcFilesCollector.new(repo_parser.filelists)
-    etc_files = collector.files.uniq.sort
 
     # compare them with the white list
-    verifier = EtcVerifier.new(etc_files, config_file)
+    verifier = EtcVerifier.new(collector.files, config_file)
     unknown = verifier.new_entries
 
     puts "\nProcessed #{collector.packages} packages\n\n"
@@ -206,7 +205,9 @@ class Application
       puts "OK, nothing new found"
     else
       puts "Found #{unknown.size} new files/directories, please check them:\n\n"
-      puts unknown
+      unknown.each do |f, p|
+        puts "#{f} (package: #{p})"
+      end
       exit 1
     end
   end
