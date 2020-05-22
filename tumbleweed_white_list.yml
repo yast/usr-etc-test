@@ -1106,3 +1106,10 @@
   defined_by:
     - gnome-settings-daemon
   yast_support:
+
+- files:
+    - /etc/oddjobd.conf.d/*
+  defined_by:
+    - oddjob
+    - oddjob-mkhomedir
+  yast_support:
