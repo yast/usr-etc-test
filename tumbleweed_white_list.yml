@@ -221,6 +221,13 @@
     - chrony
   yast_support:
   
+# Planned as https://trello.com/c/R27sCT8E/4031-chrony-is-moving-config-to-d-space
+- files:
+    - /etc/chrony.d/*
+  defined_by:
+    - chrony-pool-suse
+  yast_support:
+
 - files:
     - /etc/dnf*
   defined_by:
@@ -1121,3 +1128,49 @@
     - glibc
   yast_support:
     - yast2-pam
+
+- files:
+    - /usr/etc/default/container-*
+  defined_by:
+    - containers-systemd
+  yast_support:
+
+- files:
+    - /usr/etc/cmrt.conf
+  defined_by:
+    - libcmrt1
+  yast_support:
+
+- files:
+    - /etc/obs/services/*
+  defined_by:
+    - obs-service-obs_scm-common
+  yast_support:
+
+- files:
+    - /etc/sway/config.d/*
+  defined_by:
+    - sway-branding-openSUSE
+  yast_support:
+
+- files:
+    - /etc/xrootd/client.plugins.d/*
+  defined_by:
+    - xrootd-client-libs
+  yast_support:
+
+- files:
+    - /usr/etc/X11
+    - /usr/etc/X11/xsm
+    - /usr/etc/X11/xsm/*
+  defined_by:
+    - xsm
+  yast_support:
+
+# YaST uses zypper and there is no plan to support yum in the short term
+# (and YaST would not mangle directly with the repo files anyway)
+- files:
+    - /etc/yum.repos.d/*
+  defined_by:
+    - rpm-repos-openSUSE-Tumbleweed
+  yast_support:
