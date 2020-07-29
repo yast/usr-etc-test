@@ -1113,3 +1113,11 @@
     - oddjob
     - oddjob-mkhomedir
   yast_support:
+
+# Support implemented in https://github.com/yast/yast-pam/pull/20
+- files:
+    - /usr/etc/nsswitch.conf
+  defined_by:
+    - glibc
+  yast_support:
+    - yast2-pam
