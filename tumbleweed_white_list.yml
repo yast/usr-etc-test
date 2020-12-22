@@ -19,12 +19,22 @@
 
 - files:
     - /etc/X11/xim.d*
+    - /usr/etc/X11/xim
+    - /usr/etc/X11/xim.d*
   defined_by:
     - fcitx
+    - scim
+    - scim-bridge
+    - gcin
+    - ibus
+    - kinput2
   yast_support:
 
 - files:
     - /etc/X11/xinit/xinitrc.d*
+    - /usr/etc/X11/xinit
+    - /usr/etc/X11/xinit/xinitrc*
+    - /usr/etc/X11/Xresources
   defined_by:
     - libcanberra-gtk-module-common
     - spacenavd
@@ -32,6 +42,12 @@
     - virtualbox-guest-x11
     - xdg-user-dirs
     - xinit
+  yast_support:
+
+- files:
+    - /usr/etc/X11/Xmodmap*
+  defined_by:
+    - xmodmap
   yast_support:
 
 - files:
@@ -541,6 +557,7 @@
 
 - files:
     - /etc/pam.d*
+    - /usr/etc/pam.d*
   defined_by:
     - at
     - cinnamon-screensaver
@@ -552,6 +569,7 @@
     - freeradius-server
     - frr
     - gdm
+    - greetd
     - i3lock
     - kbd
     - krb5-client
@@ -566,6 +584,7 @@
     - pam
     - pam-config
     - pam_pkcs11
+    - physlock
     - policycoreutils
     - policycoreutils-newrole
     - polkit
@@ -661,8 +680,12 @@
 
 - files:
     - /etc/profile.d*
+    - /usr/etc/profile.d*
+    - /usr/etc/vdpau_wrapper.cfg
   defined_by:
     - aaa_base
+    - intel-media-driver
+    - libvdpau_va_gl1
   yast_support:
 
 - files:
@@ -1031,8 +1054,12 @@
     - /usr/etc/xdg
     - /usr/etc/xdg/autostart
     - /usr/etc/xdg/autostart/nm-tray-autostart.desktop
+    - /usr/etc/xdg/autostart/*budgie-desktop*
+    - /usr/etc/xdg/autostart/vncmanager-controller*
   defined_by:
     - nm-tray
+    - budgie-desktop
+    - vncmanager-controller
   yast_support:
 
 - files:
@@ -1174,3 +1201,81 @@
   defined_by:
     - rpm-repos-openSUSE-Tumbleweed
   yast_support:
+
+- files:
+    - /etc/rspamd/*
+  defined_by:
+    - rspamd
+  yast_support:
+
+- files:
+    - /usr/etc/X11/xdm*
+  defined_by:
+    - xdm
+  yast_support:
+
+- files:
+    - /etc/issue.d/cockpit*
+    - /etc/motd.d/cockpit*
+  defined_by:
+    - cockpit-ws
+  yast_support:
+
+# Planned with https://trello.com/c/lME6ABgn/4479-new-file-usr-etc-default-ypbind-and-friends
+- files:
+  - /usr/etc/default/ypbind
+  - /usr/etc/default/yppasswdd
+  - /usr/etc/default/ypserv
+  - /usr/etc/default/ypxfrd
+  defined_by:
+    - ypbind
+    - ypserv
+  yast_support:
+    - yast2-nis-client
+    - yast2-nis-server
+
+# Planned with https://trello.com/c/c5IyKL6D/4480-new-file-etc-multipath-confd-drbdconf
+- files:
+  - /etc/multipath/conf.d/drbd.conf
+  defined_by:
+    - drdb-utils
+  yast_support:
+    - yast2-multipath
+
+- files:
+    - /usr/etc/kuberlr.conf
+  defined_by:
+    - kuberlr
+  yast_support:
+
+- files:
+    - /etc/prewikka/conf.d/*
+  defined_by:
+    - python3-prewikka
+  yast_support:
+
+- files:
+    - /usr/etc/default/crda
+  defined_by:
+    - crda
+  yast_support:
+
+- files:
+    - /usr/etc/skel*
+  defined_by:
+    - filesystem
+  yast_support:
+
+- files:
+    - /usr/etc/X11/fs
+    - /usr/etc/X11/fs/config
+  defined_by:
+    - xfs
+  yast_support:
+
+- files:
+    - /etc/X11/Xsession.d/80xapp-gtk3-module
+  defined_by:
+    - xapps-common
+  yast_support:
+
