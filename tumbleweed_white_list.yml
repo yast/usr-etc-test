@@ -1279,3 +1279,10 @@
     - xapps-common
   yast_support:
 
+- files:
+    - /usr/etc/spack
+    - /usr/etc/spack/defaults*
+  defined_by:
+    - spack
+  yast_support:
+
