@@ -1,4 +1,4 @@
-# 
+#
 # This file describes a white list of files in /usr/etc and /etc found in
 # https://download.opensuse.org/tumbleweed/repo/oss/
 # which are not touched by YAST or which are already handled by YAST correctly.
@@ -133,13 +133,13 @@
     - audit
   yast_support:
     - yast2-audit-laf
-  
+
 - files:
     - /etc/avocado*
   defined_by:
     - avocado-common
   yast_support:
-  
+
 - files:
     - /etc/bash_completion.d*
   defined_by:
@@ -152,19 +152,19 @@
   defined_by:
     - hxtools-profile
   yast_support:
-  
+
 - files:
     - /etc/bumblebee/xorg.conf.d*
   defined_by:
     - bumblebee
   yast_support:
-  
+
 - files:
     - /etc/cloud/cloud.cfg.d*
   defined_by:
     - cloud-init
   yast_support:
-  
+
 - files:
     - /etc/clustduct.d*
   defined_by:
@@ -188,7 +188,7 @@
   defined_by:
     - cobbler
   yast_support:
-  
+
 - files:
     - /etc/conf.d*
   defined_by:
@@ -200,13 +200,13 @@
   defined_by:
     - ctdb
   yast_support:
-  
+
 - files:
     - /etc/dbus-1/system.d*
   defined_by:
     - ModemManager
   yast_support:
-  
+
 - files:
     - /etc/dconf/db/ibus.d*
   defined_by:
@@ -236,7 +236,7 @@
   defined_by:
     - chrony
   yast_support:
-  
+
 # Planned as https://trello.com/c/R27sCT8E/4031-chrony-is-moving-config-to-d-space
 - files:
     - /etc/chrony.d/*
@@ -295,14 +295,14 @@
   defined_by:
     - etckeeper
   yast_support:
-  
+
 - files:
     - /etc/fail2ban/action.d*
     - /etc/fail2ban/filter.d*
   defined_by:
     - fail2ban
   yast_support:
-  
+
 - files:
     - /etc/fedmsg.d*
   defined_by:
@@ -314,7 +314,7 @@
   defined_by:
     - firebird
   yast_support:
-  
+
 - files:
     - /etc/fonts/conf.d*
   defined_by:
@@ -373,7 +373,7 @@
 
 - files:
     - /etc/icinga2/conf.d*
-    - /etc/icinga2/zones.d*    
+    - /etc/icinga2/zones.d*
   defined_by:
     - icinga2
   yast_support:
@@ -502,13 +502,13 @@
   defined_by:
     - mosquitto
   yast_support:
-  
+
 - files:
     - /etc/munin/plugin-conf.d*
   defined_by:
     - munin
   yast_support:
-  
+
 - files:
     - /etc/my.cnf.d*
   defined_by:
@@ -536,7 +536,7 @@
   defined_by:
     - nginx
   yast_support:
-  
+
 - files:
     - /etc/nrpe.d*
   defined_by:
@@ -670,7 +670,7 @@
   defined_by:
     - prelude-correlator
   yast_support:
-  
+
 - files:
     - /etc/products.d*
   defined_by:
@@ -693,7 +693,7 @@
   defined_by:
     - proftpd
   yast_support:
-  
+
 - files:
     - /etc/pulse/client.conf.d*
     - /etc/pulse/daemon.conf.d*
@@ -701,7 +701,7 @@
     - libpulse0
   yast_support:
     - yast2-sound
-  
+
 - files:
     - /etc/pyenv.d*
   defined_by:
@@ -743,26 +743,26 @@
   defined_by:
     - cloud-init
   yast_support:
-  
+
 - files:
     - /etc/salt/master.d*
   defined_by:
     - salt-master
   yast_support:
-  
+
 - files:
     - /etc/sane.d*
   defined_by:
     - "e.g. hplip-sane"
   yast_support:
     - yast2-scanner
-    
+
 - files:
     - /etc/security/limits.d*
   defined_by:
     - libvma
   yast_support:
-  
+
 - files:
     - /etc/security/namespace.d*
   defined_by:
@@ -783,19 +783,19 @@
     - yast2-instserver
     - yast2-slp
     - yast2-slp-server
-  
+
 - files:
     - /etc/slurm/layouts.d*
   defined_by:
     - slurm-config
   yast_support:
-  
+
 - files:
     - /etc/strongswan.d*
   defined_by:
     - strongswan-hmac
   yast_support:
-  
+
 - files:
     - /etc/sudoers.d*
   defined_by:
@@ -806,7 +806,7 @@
     - sudo
   yast_support:
     - yast2-sudo
-  
+
 - files:
     - /etc/svxlink/svxlink.d*
   defined_by:
@@ -870,7 +870,7 @@
   defined_by:
     - tomcat
   yast_support:
-  
+
 - files:
     - /etc/udev/rules.d*
   defined_by:
@@ -898,7 +898,7 @@
   defined_by:
     - unbound
   yast_support:
-  
+
 - files:
     - /etc/wgetpaste.d*
   defined_by:
@@ -925,7 +925,7 @@
   defined_by:
     - daps
   yast_support:
-  
+
 - files:
     - /etc/xpra/conf.d*
   defined_by:
@@ -991,7 +991,7 @@
   defined_by:
     - hanadb_exporter
   yast_support:
-    
+
 - files:
     - /usr/etc/kubicd
     - /usr/etc/kubicd/kubicd.conf
@@ -1009,7 +1009,7 @@
 
 # Support implemented at https://github.com/yast/yast-yast2/pull/988
 - files:
-    - /usr/etc/login.defs  
+    - /usr/etc/login.defs
   defined_by:
     - shadow
   yast_support:
@@ -1033,7 +1033,7 @@
   defined_by:
     - rebootmgr
   yast_support:
-    
+
 - files:
     - /usr/etc/registry
     - /usr/etc/registry/auth_config.yml
@@ -1087,7 +1087,7 @@
     - pam
   yast_support:
     - yast2-auth-client
-    
+
 - files:
     - /usr/etc/pam.d/chage
     - /usr/etc/pam.d/chfn
@@ -1110,12 +1110,12 @@
   defined_by:
     - kscreenlocker
   yast_support:
-    
+
 - files:
     - /usr/etc/pam.d/login
     - /usr/etc/pam.d/remote
     - /usr/etc/pam.d/runuser
-    - /usr/etc/pam.d/runuser-l    
+    - /usr/etc/pam.d/runuser-l
     - /usr/etc/pam.d/su
     - /usr/etc/pam.d/su-l
   defined_by:
@@ -1124,7 +1124,7 @@
 
 - files:
     - /usr/etc/pam.d/sudo
-    - /usr/etc/pam.d/sudo-i    
+    - /usr/etc/pam.d/sudo-i
   defined_by:
     - sudo
   yast_support:
