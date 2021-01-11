@@ -1286,3 +1286,8 @@
     - spack
   yast_support:
 
+- files:
+    - /usr/etc/default/spamass-milter
+  defined_by:
+    - spamass-milter
+  yast_support:
