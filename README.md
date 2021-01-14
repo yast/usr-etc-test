@@ -1,7 +1,10 @@
 /usr/etc and /etc/\*/\*.d check
 ==============================
 
-File check result: &nbsp; [![Build Status](https://travis-ci.com/yast/usr-etc-test.svg?branch=master)](https://travis-ci.com/yast/usr-etc-test)
+[![Workflow Status](https://github.com/yast/usr-etc-test/workflows/CI/badge.svg?branch=master)](
+https://github.com/yast/usr-etc-test/actions?query=workflow%3ACI+branch%3Amaster)
+[![Check](https://github.com/yast/usr-etc-test/workflows/Check/badge.svg?branch=master)](
+https://github.com/yast/usr-etc-test/actions?query=workflow%3ACheck+branch%3Amaster)
 
 This project checks and reports all changes in `/usr/etc` and `/etc/*/*.d`
 in order to give the YaST team the possibility to adapt the YAST modules to that
@@ -21,8 +24,8 @@ changes too.
 
 - A Ruby interpreter
 
-## Travis Setup
+## Running the Check
 
-The check is executed once a week as a [Travis cron job](
-https://docs.travis-ci.com/user/cron-jobs/), you can check the [build job
-history](https://travis-ci.com/github/yast/usr-etc-test/builds).
+The check is executed regularly (once a week) as a GitHub Action,
+you can check the [build job history](
+https://github.com/yast/usr-etc-test/actions?query=workflow%3ACheck+branch%3Amaster).
