@@ -1,10 +1,14 @@
+**Check result:** &nbsp;&nbsp; [![Check](https://github.com/yast/usr-etc-test/workflows/Check/badge.svg?branch=master)](
+https://github.com/yast/usr-etc-test/actions?query=workflow%3ACheck+branch%3Amaster)
+
+---
+
 /usr/etc and /etc/\*/\*.d check
 ==============================
 
 [![Workflow Status](https://github.com/yast/usr-etc-test/workflows/CI/badge.svg?branch=master)](
 https://github.com/yast/usr-etc-test/actions?query=workflow%3ACI+branch%3Amaster)
-[![Check](https://github.com/yast/usr-etc-test/workflows/Check/badge.svg?branch=master)](
-https://github.com/yast/usr-etc-test/actions?query=workflow%3ACheck+branch%3Amaster)
+
 
 This project checks and reports all changes in `/usr/etc` and `/etc/*/*.d`
 in order to give the YaST team the possibility to adapt the YAST modules to that
