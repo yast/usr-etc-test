@@ -125,9 +125,7 @@ class FileListener
     return unless @in_file_tag
 
     # bsc#1166473
-    if data.match(/^\/etc\/\S*\.d\//) || data.start_with?("/usr/etc/")
-      files[data] = @package
-    end
+    files[data] = @package if data.match(/^\/etc\/\S*\.d\//) || data.start_with?("/usr/etc/")
 
     @in_file_tag = false
   end
@@ -168,7 +166,7 @@ class EtcVerifier
   end
 
   def new_entries
-    files.reject do |f, p|
+    files.reject do |f, _p|
       config.any? do |c|
         c["files"].any? { |glob| File.fnmatch?(glob, f) }
       end
