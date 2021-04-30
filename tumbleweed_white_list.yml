@@ -1291,3 +1291,142 @@
   defined_by:
     - spamass-milter
   yast_support:
+
+- files:
+    - /etc/php8/conf.d/*
+    - /etc/php8/fpm/php-fpm.d/www.conf.default
+  defined_by:
+    - php8-APCu
+    - php8-bcmath
+    - php8-bz2
+    - php8-calendar
+    - php8-ctype
+    - php8-curl
+    - php8-dba
+    - php8-dom
+    - php8-enchant
+    - php8-exif
+    - php8-fileinfo
+    - php8-fpm
+    - php8-ftp
+    - php8-gd
+    - php8-gettext
+    - php8-gmagick
+    - php8-gmp
+    - php8-ice
+    - php8-iconv
+    - php8-intl
+    - php8-ldap
+    - php8-lzf
+    - php8-maxminddb
+    - php8-mbstring
+    - php8-memcache
+    - php8-memcached
+    - php8-mysql
+    - php8-odbc
+    - php8-opcache
+    - php8-openssl
+    - php8-pcntl
+    - php8-pdo
+    - php8-pgsql
+    - php8-phar
+    - php8-posix
+    - php8-psr
+    - php8-readline
+    - php8-redis
+    - php8-shmop
+    - php8-smbclient
+    - php8-snmp
+    - php8-soap
+    - php8-sockets
+    - php8-sodium
+    - php8-sqlite
+    - php8-sysvmsg
+    - php8-sysvsem
+    - php8-sysvshm
+    - php8-tidy
+    - php8-tokenizer
+    - php8-uuid
+    - php8-xdebug
+    - php8-xmlreader
+    - php8-xmlwriter
+    - php8-xsl
+    - php8-zip
+    - php8-zlib
+  yast_support:
+
+- files:
+    - /etc/pipewire/media-session.d/*
+  defined_by:
+    - pipewire
+  yast_support:
+
+- files:
+    - /usr/etc/replay-sorcery.conf
+  defined_by:
+    - replay-sorcery
+  yast_support:
+
+- files:
+    - /usr/etc/SUSE-brand
+  defined_by:
+    - branding-upstream
+  yast_support:
+
+- files:
+    - /usr/etc/xdg/autostart/budgie-extras-daemon.desktop
+  defined_by:
+    - budgie-extras-daemon
+  yast_support:
+
+- files:
+    - /usr/etc/xdg/autostart/previews-creator-autostart.desktop
+    - /usr/etc/xdg/autostart/previews-daemon-autostart.desktop
+  defined_by:
+    - budgie-previews
+  yast_support:
+
+- files:
+    - /usr/etc/xdg/autostart/quickchar-autostart.desktop
+  defined_by:
+    - budgie-quickchar
+  yast_support:
+
+- files:
+    - /usr/etc/xdg/autostart/visualspace-autostart.desktop
+  defined_by:
+    - budgie-visualspace-applet
+  yast_support:
+
+- files:
+    - /usr/etc/xdg/autostart/wallstreet-autostart.desktop
+  defined_by:
+    - budgie-wallstreet
+  yast_support:
+
+- files:
+    - /usr/etc/xdg/autostart/layoutspopup-autostart.desktop
+    - /usr/etc/xdg/autostart/shufflerdaemon-autostart.desktop
+    - /usr/etc/xdg/autostart/shufflergui-autostart.desktop
+  defined_by:
+    - budgie-window-shufller
+  yast_support:
+
+- files:
+    - /etc/NetworkManager/conf.d/deepin.dde.daemon.conf
+    - /etc/default/grub.d/10_deepin.cfg
+  defined_by:
+    - depping-daemon
+  yast_support:
+
+- files:
+    - /etc/deepin/greeters.d/00-xrandr
+  defined_by:
+    - deepin-session-shell
+  yast_support:
+
+- files:
+    - /etc/deepin/greeters.d/lightdm-deepin-greeter
+  defined_by:
+    - lightdm-deepin-greeter
+  yast_support:
