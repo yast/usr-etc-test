@@ -1294,6 +1294,7 @@
 
 - files:
     - /etc/php8/conf.d/*
+    - /etc/php8/fpm/php-fpm.d/www.conf.default
   defined_by:
     - php8-APCu
     - php8-bcmath
@@ -1370,4 +1371,62 @@
     - /usr/etc/SUSE-brand
   defined_by:
     - branding-upstream
+  yast_support:
+
+- files:
+    - /usr/etc/xdg/autostart/budgie-extras-daemon.desktop
+  defined_by:
+    - budgie-extras-daemon
+  yast_support:
+
+- files:
+    - /usr/etc/xdg/autostart/previews-creator-autostart.desktop
+    - /usr/etc/xdg/autostart/previews-daemon-autostart.desktop
+  defined_by:
+    - budgie-previews
+  yast_support:
+
+- files:
+    - /usr/etc/xdg/autostart/quickchar-autostart.desktop
+  defined_by:
+    - budgie-quickchar
+  yast_support:
+
+- files:
+    - /usr/etc/xdg/autostart/visualspace-autostart.desktop
+  defined_by:
+    - budgie-visualspace-applet
+  yast_support:
+
+- files:
+    - /usr/etc/xdg/autostart/wallstreet-autostart.desktop
+  defined_by:
+    - budgie-wallstreet
+  yast_support:
+
+- files:
+    - /usr/etc/xdg/autostart/layoutspopup-autostart.desktop
+    - /usr/etc/xdg/autostart/shufflerdaemon-autostart.desktop
+    - /usr/etc/xdg/autostart/shufflergui-autostart.desktop
+  defined_by:
+    - budgie-window-shufller
+  yast_support:
+
+- files:
+    - /etc/NetworkManager/conf.d/deepin.dde.daemon.conf
+    - /etc/default/grub.d/10_deepin.cfg
+  defined_by:
+    - depping-daemon
+  yast_support:
+
+- files:
+    - /etc/deepin/greeters.d/00-xrandr
+  defined_by:
+    - deepin-session-shell
+  yast_support:
+
+- files:
+    - /etc/deepin/greeters.d/lightdm-deepin-greeter
+  defined_by:
+    - lightdm-deepin-greeter
   yast_support:
