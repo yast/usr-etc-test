@@ -1430,3 +1430,13 @@
   defined_by:
     - lightdm-deepin-greeter
   yast_support:
+
+- files:
+    - /etc/audit/plugins.d/af_unix.conf
+    - /etc/audit/plugins.d/syslog.conf
+    - /etc/audit/plugins.d/au-remote.conf
+    - /etc/audit/plugins.d/audispd-zos-remote.conf
+  defined_by:
+    - audit
+    - audit-audispd-plugins
+  yast_support:
