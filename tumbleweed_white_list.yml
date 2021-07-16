@@ -1440,3 +1440,19 @@
     - audit
     - audit-audispd-plugins
   yast_support:
+
+# Planned as https://trello.com/c/Ocom0NlD/4812-new-usr-etc-ssh-files
+- files:
+    - /usr/etc/ssh/ssh_config
+    - /usr/etc/ssh
+    - /usr/etc/ssh/moduli
+    - /usr/etc/ssh/sshd_config
+  defined_by:
+    - openssh-clients
+    - openssh-server
+    - openssh-common
+  yast_support:
+    - yast2-samba-client
+    - yast2-firstboot
+    - yast2-installation
+    - yast2-yast2
