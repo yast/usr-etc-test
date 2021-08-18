@@ -1469,3 +1469,16 @@
   defined_by:
     - transactional-update
   yast_support:
+
+# Planned as https://trello.com/c/qipAVZOO
+- files:
+    - /usr/etc/polkit-default-privs
+    - /usr/etc/polkit-default-privs/local.template
+    - /usr/etc/polkit-default-privs/profiles
+    - /usr/etc/polkit-default-privs/profiles/easy
+    - /usr/etc/polkit-default-privs/profiles/restrictive
+    - /usr/etc/polkit-default-privs/profiles/standard
+  defined_by:
+    - polkit-default-privs
+  yast_support:
+    - yast2-security
