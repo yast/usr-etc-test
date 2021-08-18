@@ -1463,3 +1463,9 @@
   defined_by:
     - keyutils
   yast_support:
+
+- files:
+    - /usr/etc/tukit.conf
+  defined_by:
+    - transactional-update
+  yast_support:
