@@ -1456,3 +1456,10 @@
     - yast2-firstboot
     - yast2-installation
     - yast2-yast2
+
+- files:
+    - /usr/etc/keys
+    - /usr/etc/keys/ima
+  defined_by:
+    - keyutils
+  yast_support:
