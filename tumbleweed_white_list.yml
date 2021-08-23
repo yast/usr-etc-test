@@ -1482,3 +1482,9 @@
     - polkit-default-privs
   yast_support:
     - yast2-security
+
+- files:
+    - /usr/etc/xdg/autostart/firewall-applet.desktop
+  defined_by:
+    - firewall-applet
+  yast_support:
