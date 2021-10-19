@@ -1488,3 +1488,21 @@
   defined_by:
     - firewall-applet
   yast_support:
+
+- files:
+    - /etc/xdg/Xwayland-session.d/00-at-spi
+  defined_by:
+    - at-spi2-core
+  yast_support:
+
+- files:
+    - /etc/salt/minion.d/standalone-formulas-configuration.conf
+  defined_by:
+    - salt-standalone-formulas-configuration
+  yast_support:
+
+- files:
+    - /etc/salt/minion.d/transactional_update.conf
+  defined_by:
+    - salt-transactional-update
+  yast_support:
