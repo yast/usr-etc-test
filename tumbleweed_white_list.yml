@@ -1506,3 +1506,11 @@
   defined_by:
     - salt-transactional-update
   yast_support:
+
+- files:
+    - /usr/etc/jupyter*
+  defined_by:
+    - jupyter-bqplot-notebook
+    - jupyter-jupyter_core-filesystem
+    - jupyter-notebook-filesystem
+  yast_support:
