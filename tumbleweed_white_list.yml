@@ -1514,3 +1514,15 @@
     - jupyter-jupyter_core-filesystem
     - jupyter-notebook-filesystem
   yast_support:
+
+# Planned with https://trello.com/c/z7hNodYR/5000-add-support-for-usr-etc-sercurity
+- files:
+    - /usr/etc/security
+    - /usr/etc/security/limits.conf
+  defined_by:
+    - pam
+  yast_support:
+    - yast-pam
+    - yast-samba-client
+    - yast-packager
+    - yast-update
