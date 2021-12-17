@@ -1294,7 +1294,7 @@
 
 - files:
     - /etc/php8/conf.d/*
-    - /etc/php8/fpm/php-fpm.d/www.conf.default
+    - /etc/php8/fpm/php-fpm.d/*
   defined_by:
     - php8-APCu
     - php8-bcmath
