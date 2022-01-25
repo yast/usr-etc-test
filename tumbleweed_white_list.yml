@@ -1526,3 +1526,10 @@
     - yast-samba-client
     - yast-packager
     - yast-update
+
+- files:
+    - /usr/etc/keylime.conf
+  defined_by:
+    - keylime-config
+  yast_support:
+    - skelcd-control-MicroOS
