@@ -1533,3 +1533,25 @@
     - keylime-config
   yast_support:
     - skelcd-control-MicroOS
+
+- files:
+    - /etc/condor/config.d/*
+    - /etc/condor/ganglia.d/00_default_metrics
+  defined_by:
+    - htcondor
+    - htcondor-classads-devel
+    - htcondor-credmon-oauth
+    - minicondor
+  yast_support:
+
+- files:
+    - /etc/udisks2/modules.conf.d/udisks2_lsm.conf
+  defined_by:
+    - libudisks2-0_lsm
+  yast_support:
+
+- files:
+    - /etc/deepin/greeters.d/10-cursor-theme
+  defined_by:
+    - lightdm-deepin-greeter
+  yast_support:
