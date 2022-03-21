@@ -1555,3 +1555,26 @@
   defined_by:
     - lightdm-deepin-greeter
   yast_support:
+
+- files:
+    - /usr/etc/logrotate.d
+    - /usr/etc/logrotate.d/*
+    - /usr/etc/logrotate.conf
+  defined_by:
+    - logrotate
+  yast_support:
+
+- files:
+    - /etc/mdevctl.d/scripts.d
+    - /etc/mdevctl.d/scripts.d/callouts
+    - /etc/mdevctl.d/scripts.d/notifiers
+  defined_by:
+    - mdevctl
+  yast_support:
+
+- files:
+    - /usr/etc/security/faillock.conf
+    - /usr/etc/security/group.conf
+  defined_by:
+    - pam
+  yast_support:
