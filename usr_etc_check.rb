@@ -193,7 +193,7 @@ class Application
     repo_parser = RepoIndexParser.new(repo_url)
     collector = EtcFilesCollector.new(repo_parser.filelists)
 
-    # compare them with the white list
+    # compare them with the known changes list
     verifier = EtcVerifier.new(collector.files, config_file)
     unknown = verifier.new_entries
 

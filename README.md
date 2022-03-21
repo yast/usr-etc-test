@@ -16,12 +16,12 @@ changes too.
 
 ## Workflow
 
-- Run test with `./usr_etc_check.rb <repository_url> <whitelist.yml>`
-- Example: `./usr_etc_check.rb https://download.opensuse.org/tumbleweed/repo/oss tumbleweed_white_list.yml`
+- Run test with `./usr_etc_check.rb <repository_url> <known_changes.yml>`
+- Example: `./usr_etc_check.rb https://download.opensuse.org/tumbleweed/repo/oss tumbleweed_known_changes.yml`
 - The test
   - Downloads the `*-filelists.xml.gz` from the given repository
   - Extracts a list of all configuration files in `/etc/*/*.d` and `/usr/etc`
-  - Compares this list with the white list YAML file
+  - Compares this list with the known changes list YAML file
   - Reports the new entries which where not found
 
 ## Packages Required for Running Test
