@@ -1491,6 +1491,9 @@
 
 - files:
     - /etc/xdg/Xwayland-session.d/00-at-spi
+    - /usr/etc/xdg/Xwayland-session.d
+    - /usr/etc/xdg/Xwayland-session.d/00-at-spi
+    - /usr/etc/xdg/autostart/at-spi-dbus-bus.desktop
   defined_by:
     - at-spi2-core
   yast_support:
@@ -1577,4 +1580,29 @@
     - /usr/etc/security/group.conf
   defined_by:
     - pam
+  yast_support:
+
+- files:
+    - /etc/systemd/system/sshd-keygen@.service.d/disable-sshd-keygen-if-cloud-init-active.conf
+  defined_by:
+    - cloud-init
+  yast_support:
+
+- files:
+    - /usr/etc/xdg/autostart/gnome-initial-setup-copy-worker.desktop
+    - /usr/etc/xdg/autostart/gnome-initial-setup-first-login.desktop
+  defined_by:
+    - gnome-initial-setup
+  yast_support:
+
+- files:
+    - /etc/xdg/Xwayland-session.d/10-ibus-x11
+  defined_by:
+    - ibus
+  yast_support:
+
+- files:
+    - /usr/etc/xdg/autostart/org.gnome.Software.desktop
+  defined_by:
+    - gnome-software
   yast_support:
