@@ -1606,3 +1606,16 @@
   defined_by:
     - gnome-software
   yast_support:
+
+- files:
+    - /etc/daxctl.conf.d/daxctl.example.conf
+    - /etc/ndctl.conf.d/*
+  defined_by:
+    - ndctl
+  yast_support:
+
+- files:
+    - /etc/zypp/vendors.d/00-openSUSE.conf
+  defined_by:
+    - openSUSE-release
+  yast_support:
