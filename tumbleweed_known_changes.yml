@@ -1444,9 +1444,11 @@
 # Planned as https://trello.com/c/Ocom0NlD/4812-new-usr-etc-ssh-files
 - files:
     - /usr/etc/ssh/ssh_config
+    - /usr/etc/ssh/ssh_config.d
     - /usr/etc/ssh
     - /usr/etc/ssh/moduli
     - /usr/etc/ssh/sshd_config
+    - /usr/etc/ssh/sshd_config.d
   defined_by:
     - openssh-clients
     - openssh-server
