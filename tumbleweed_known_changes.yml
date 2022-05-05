@@ -1444,13 +1444,17 @@
 # Planned as https://trello.com/c/Ocom0NlD/4812-new-usr-etc-ssh-files
 - files:
     - /usr/etc/ssh/ssh_config
+    - /usr/etc/ssh/ssh_config.d
     - /usr/etc/ssh
     - /usr/etc/ssh/moduli
     - /usr/etc/ssh/sshd_config
+    - /usr/etc/ssh/sshd_config.d
+    - /usr/etc/ssh/sshd_config.d/50-permit-root-login.conf
   defined_by:
     - openssh-clients
     - openssh-server
     - openssh-common
+    - openssh-server-config-rootlogin
   yast_support:
     - yast2-samba-client
     - yast2-firstboot
@@ -1618,4 +1622,11 @@
     - /etc/zypp/vendors.d/00-openSUSE.conf
   defined_by:
     - openSUSE-release
+  yast_support:
+
+- files:
+    - /usr/etc/xdg/foot
+    - /usr/etc/xdg/foot/*
+  defined_by:
+    - foot
   yast_support:
