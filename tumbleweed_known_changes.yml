@@ -1619,3 +1619,10 @@
   defined_by:
     - openSUSE-release
   yast_support:
+
+- files:
+    - /usr/etc/xdg/foot
+    - /usr/etc/xdg/foot/*
+  defined_by:
+    - foot
+  yast_support:
