@@ -1449,10 +1449,12 @@
     - /usr/etc/ssh/moduli
     - /usr/etc/ssh/sshd_config
     - /usr/etc/ssh/sshd_config.d
+    - /usr/etc/ssh/sshd_config.d/50-permit-root-login.conf
   defined_by:
     - openssh-clients
     - openssh-server
     - openssh-common
+    - openssh-server-config-rootlogin
   yast_support:
     - yast2-samba-client
     - yast2-firstboot
