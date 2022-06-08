@@ -907,6 +907,7 @@
 
 - files:
     - /etc/xdg/virt-builder/repos.d*
+    - /etc/virt-builder/repos.d*
   defined_by:
     - guestfs-tools
   yast_support:
