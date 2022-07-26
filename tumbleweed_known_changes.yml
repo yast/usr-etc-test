@@ -1464,8 +1464,7 @@
 
 - files:
     - /usr/etc/keys
-    - /usr/etc/keys/ima
-    - /usr/etc/keys/evm
+    - /usr/etc/keys/*
   defined_by:
     - keyutils
   yast_support:
