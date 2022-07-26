@@ -1464,7 +1464,7 @@
 
 - files:
     - /usr/etc/keys
-    - /usr/etc/keys/ima
+    - /usr/etc/keys/*
   defined_by:
     - keyutils
   yast_support:
@@ -1630,4 +1630,19 @@
     - /usr/etc/xdg/foot/*
   defined_by:
     - foot
+  yast_support:
+
+- files:
+    - /usr/etc/distrobox*
+  defined_by:
+    - distrobox
+  yast_support:
+
+- files:
+    - /usr/etc/modulefiles
+    - /usr/etc/modulefiles/vpl
+    - /usr/etc/vpl
+    - /usr/etc/vpl/vars.sh
+  defined_by:
+    - libvpl2
   yast_support:
