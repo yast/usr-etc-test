@@ -1647,3 +1647,9 @@
   defined_by:
     - libvpl2
   yast_support:
+
+- files:
+    - /usr/etc/gprofng.rc
+  defined_by:
+    - gprofng
+  yast_support:
