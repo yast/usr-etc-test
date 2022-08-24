@@ -63,6 +63,7 @@
 
 - files:
     - /etc/containers/registries.d*
+    - /etc/containers/registries.conf.d/*
   defined_by:
     - libcontainers-common
   yast_support:
