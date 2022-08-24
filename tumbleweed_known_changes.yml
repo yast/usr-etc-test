@@ -63,6 +63,7 @@
 
 - files:
     - /etc/containers/registries.d*
+    - /etc/containers/registries.conf.d/*
   defined_by:
     - libcontainers-common
   yast_support:
@@ -1645,4 +1646,10 @@
     - /usr/etc/vpl/vars.sh
   defined_by:
     - libvpl2
+  yast_support:
+
+- files:
+    - /usr/etc/gprofng.rc
+  defined_by:
+    - gprofng
   yast_support:
