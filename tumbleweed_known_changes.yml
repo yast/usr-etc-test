@@ -1653,3 +1653,17 @@
   defined_by:
     - gprofng
   yast_support:
+
+- files:
+    - /usr/etc/default/docserv-auxserver
+    - /usr/etc/default/docserv-minisrv
+  defined_by:
+    - docserv-auxserver
+    - docserv-minisrv
+  yast_support:
+
+- files:
+    - /usr/etc/xdg/autostart/org.gnome.Calls-daemon.desktop
+  defined_by:
+    - calls
+  yast_support:
