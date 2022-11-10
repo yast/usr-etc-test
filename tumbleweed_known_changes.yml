@@ -1667,3 +1667,38 @@
   defined_by:
     - calls
   yast_support:
+
+- files:
+    - /etc/fwupd/bios-settings.d/*
+  defined_by:
+    - fwupd
+  yast_support:
+
+- files:
+    - /etc/zypp/vars.d/DIST_ARCH
+  defined_by:
+    - openSUSE-repos-Tumbleweed
+  yast_support:
+
+- files:
+    - /usr/etc/keylime
+    - /usr/etc/keylime/*
+  defined_by:
+    - rust-keylime
+    - keylime-config
+    - keylime-registrar
+    - keylime-tenant
+    - keylime-verifier
+  yast_support:
+
+- files:
+    - /usr/etc/os-update.conf
+  defined_by:
+    - os-update
+  yast_support:
+
+- files:
+    - /usr/etc/default/systemd-status-mail
+  defined_by:
+    - systemd-status-mail
+  yast_support:
