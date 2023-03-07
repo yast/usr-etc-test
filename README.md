@@ -1,12 +1,8 @@
-**Check result:** &nbsp;&nbsp; [![Check](https://github.com/yast/usr-etc-test/workflows/Check/badge.svg?branch=master)](
-https://github.com/yast/usr-etc-test/actions?query=workflow%3ACheck+branch%3Amaster)
-
----
 
 /usr/etc and /etc/\*/\*.d check
 ==============================
 
-[![Workflow Status](https://github.com/yast/usr-etc-test/workflows/CI/badge.svg?branch=master)](
+[![CI](https://github.com/yast/usr-etc-test/workflows/CI/badge.svg?branch=master)](
 https://github.com/yast/usr-etc-test/actions?query=workflow%3ACI+branch%3Amaster)
 
 
@@ -30,6 +26,5 @@ changes too.
 
 ## Running the Check
 
-The check is executed regularly (once a week) as a GitHub Action,
-you can check the [build job history](
-https://github.com/yast/usr-etc-test/actions?query=workflow%3ACheck+branch%3Amaster).
+*The check has been disabled as it is not useful anymore and only reports
+lots of false positives.*
